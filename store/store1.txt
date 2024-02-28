@@ -1,0 +1,43 @@
+ <div class="bookmark">
+      <span class="bi-dot bookdot"></span>
+      <span class="bi-bookmark bookmarkAdd"></span>
+</div>
+
+<!-- // const searchTerm = "h";
+// const text = "Hellohellohilol";
+
+// const regex = new RegExp(searchTerm, "gi");
+// const matches = text.match(regex);
+
+// console.log(matches);
+// console.log(text.lastIndexOf("H"));
+
+// let html = "";
+
+// for (let i = 0; i < 9; i++) {
+//   html += `
+//     <div class="note">
+//     <div class="noteHead">Birthday</div>
+//     <div class="dateAnddeleteBtn">
+//     <div class="date">8:24</div>
+
+//     <!-- <div class="delete">Delete</div> -->
+<!-- //   </div>
+//     <div class="textNote">Lorem, adipisicing.
+//      te neque sit,red yellow green, adipisicing.
+//    te neque sit,red yellow green.
+//    </div>
+
+//    <div class="calendarBox">
+//    <!--<span class="bi-dot bookdot"></span>-->
+    <!-- <span class="bi-calendar"></span>
+
+  </div>
+   </div>
+     `;
+ }   -->
+
+ position: fixed;
+  right: 50%;
+  bottom: 10%;
+  transform: translate(50%, 10%);

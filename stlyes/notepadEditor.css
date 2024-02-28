@@ -1,0 +1,131 @@
+:root {
+  --main-color: rgb(22, 21, 21);
+  --sec-color: rgb(241, 108, 108);
+  --notes-color: rgb(42, 40, 40);
+  --notes-text-color: rgb(94, 91, 91);
+  --date-color: rgb(193, 185, 185);
+}
+
+@font-face {
+  font-family: teko;
+  src: url(/Fonts/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+  font-family: robotoc;
+  src: url(/Fonts/RobotoCondensed-Regular.ttf);
+}
+
+/* body {
+  background-color: var(--main-color);
+  font-family: teko;
+  color: white;
+  margin: 0;
+  padding-top: 160px;
+  height: 74vh;
+  
+} */
+
+.noteEditor{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  padding-top: 170px;
+  overflow: auto;
+  display: none;
+}
+
+.noteEditor::-webkit-scrollbar{
+  display: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.editorHeader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 20px;
+  background-color: var(--main-color);
+}
+.editorHeader > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+}
+.inputHead {
+  padding: 50px 30px 0 20px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 35px;
+  background-color: var(--main-color);
+}
+.inputHead > div:first-child {
+  height: 30px;
+  margin-bottom: 15px;
+
+}
+.inputHead > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 15px;
+  color: var(--notes-text-color);
+  border-bottom: 1px solid var(--notes-text-color);
+  padding-bottom: 25px;
+  padding-left: 2px;
+  font-weight: bold;
+
+}
+.inputHeadText {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: white;
+  outline: none;
+}
+.inputNote {
+  margin-top: 0;
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  font-size: 17px;
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+  height: 100%;
+  /* border: 2px solid red; */
+}
+.inputNote::-webkit-scrollbar {
+  display: none;
+}
+.keyboardBtn {
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  border: none;
+}
+.kbIcon {
+  font-size: 25px;
+}
+.active{
+  display: initial;
+}
+.new-active{
+  display: flex;
+}
