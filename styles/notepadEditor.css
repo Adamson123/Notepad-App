@@ -16,16 +16,6 @@
   src: url(/Fonts/RobotoCondensed-Regular.ttf);
 }
 
-/* body {
-  background-color: var(--main-color);
-  font-family: teko;
-  color: white;
-  margin: 0;
-  padding-top: 160px;
-  height: 74vh;
-  
-} */
-
 .noteEditor{
   position: fixed;
   top: 0;
@@ -36,6 +26,7 @@
   padding-top: 170px;
   overflow: auto;
   display: none;
+  background-color: var(--main-color);
 }
 
 .noteEditor::-webkit-scrollbar{
@@ -43,6 +34,11 @@
 }
 body::-webkit-scrollbar {
   display: none;
+}
+
+.hideEditorBtn {
+  cursor: pointer;
+  font-weight: bold;
 }
 .editorHeader {
   position: fixed;
@@ -52,7 +48,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  padding: 20px;
+  padding: 15px 20px;
   background-color: var(--main-color);
 }
 .editorHeader > div:nth-child(2) {
@@ -60,8 +56,9 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   width: 15%;
 }
+
 .inputHead {
-  padding: 50px 30px 0 20px;
+  padding: 40px 30px 0 20px;
   position: fixed;
   right: 0;
   left: 0;
@@ -77,7 +74,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 15px;
+  font-size: 12px;
   color: var(--notes-text-color);
   border-bottom: 1px solid var(--notes-text-color);
   padding-bottom: 25px;
@@ -94,17 +91,23 @@ body::-webkit-scrollbar {
   color: white;
   outline: none;
 }
+.inputNoteDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  height: 100%;
+}
 .inputNote {
   margin-top: 0;
-  width: 100%;
-  padding: 20px;
+  width: calc(100% - 40px);
   outline: none;
   font-size: 17px;
   background-color: var(--main-color);
   border: none;
   color: white;
   height: 100%;
-  /* border: 2px solid red; */
+  transform: translateX(-3px);
 }
 .inputNote::-webkit-scrollbar {
   display: none;
@@ -122,10 +125,4 @@ body::-webkit-scrollbar {
 }
 .kbIcon {
   font-size: 25px;
-}
-.active{
-  display: initial;
-}
-.new-active{
-  display: flex;
 }

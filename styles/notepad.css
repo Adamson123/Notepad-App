@@ -1,0 +1,158 @@
+:root {
+  --main-color: rgb(22, 21, 21);
+  --sec-color: rgb(241, 108, 108);
+  --notes-color: rgb(42, 40, 40);
+  --notes-text-color: rgb(94, 91, 91);
+  --date-color: rgb(193, 185, 185);
+  --navbar-border: rgba(219, 255, 255, 0.3);
+}
+
+@font-face {
+  font-family: teko;
+  src: url(/Notepad\ App/Fonts/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+  font-family: robotoc;
+  src: url(/Notepad\ App\Fonts\RobotoCondensed-Regular.ttf);
+}
+
+body {
+  background-color: var(--main-color);
+  font-family: teko;
+  color: white;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.notesBox {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 15px;
+  row-gap: 15px;
+  align-content: center;
+  justify-content: center;
+  margin-top: 30px;
+  overflow: auto;
+  padding: 25px;
+}
+
+.notesBox::-webkit-scrollbar {
+  display: none;
+}
+.note {
+  height: 160px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: var(--notes-color);
+  padding: 10px 10px 10px 15px;
+  position: relative;
+}
+.note::before {
+  content: "";
+  position: absolute;
+  height: 160px;
+  width: 7px;
+  background-color: var(--sec-color);
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.noteHead {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 13px;
+  font-family: robotoc, Arial;
+}
+.textNote {
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 10px;
+  margin-top: 10px;
+  line-height: 15px;
+  color: white;
+  position: relative;
+  word-wrap: break-word;
+ 
+  
+}
+.textNote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, transparent, rgb(45, 44, 44));
+  height: 150%;
+}
+.textNote::-webkit-scrollbar {
+  display: none;
+}
+.dateDiv {
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  flex-direction: column;
+  border-bottom: 1px solid var(--date-color);
+  padding-bottom: 10px;
+}
+
+
+.date {
+  color: var(--date-color);
+  font-weight: bold;
+
+}
+
+
+
+.bookIcon {
+  color: var(--sec-color);
+}
+.calendarBox {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+}
+.calendarBox span {
+  font-size: 12px;
+}
+
+
+
+
+
+@media (min-width: 625px) {
+  .notesBox {
+    grid-template-columns: 25% 25% 25% 25%;
+    padding: 50px;
+  }
+
+  .editMenubox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .show {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+  }
+  .hide {
+    display: none;
+  }
+}

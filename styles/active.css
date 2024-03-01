@@ -1,0 +1,8 @@
+.active{
+    display: initial;
+  }
+  .new-active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

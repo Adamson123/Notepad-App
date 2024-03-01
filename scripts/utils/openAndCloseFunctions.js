@@ -1,11 +1,11 @@
-export function showElement(element) {
-    element.classList.add('active');
+export function showElement(element,active) {
+    element.classList.add(active);
   }
   
-export  function hideElement(element) {
-    element.classList.remove('active');
+export  function hideElement(element,active) {
+    element.classList.remove(active);
   }
 
-export function toggleElement(element) {
+export function toggleElement(element,active) {
     element.classList.toggle('active')
 }

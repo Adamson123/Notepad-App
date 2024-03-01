@@ -1,0 +1,64 @@
+.bottomNavbar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-top: 2px solid var(--navbar-border);
+}
+.searchIcon,
+.trashIcon,
+.bookIcon {
+  color: var(--date-color);
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.addBtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--sec-color);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform: translate(0, -18px);
+  position: relative;
+  z-index: 3;
+  margin-left: 5px;
+}
+
+.addBtn > span:first-child {
+  color: white;
+  font-weight: bold;
+  font-size: 33px;
+  margin-top: 4px;
+}
+.addBtn > span:nth-child(2) {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: var(--sec-color);
+  border-radius: 50%;
+  z-index: -1;
+  clip-path: circle(100% at 50% -40%);
+  border: 5px solid var(--main-color);
+}
+
+.addBtn > span:nth-child(3) {
+  position: absolute;
+  width: 52px;
+  height: 51.2px;
+  background-color: var(--navbar-border);
+  border-radius: 50%;
+  z-index: -3;
+  clip-path: circle(100% at 50% -50%);
+  border: 5px solid var(--navbar-border);
+}

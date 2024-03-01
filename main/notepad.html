@@ -6,10 +6,13 @@
     <title>Notepad</title>
     <link
       rel="stylesheet"
-      href="bootstrap-icons-1.11.3/font/bootstrap-icons.css"
+      href="../bootstrap-icons-1.11.3/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="stlyes/notepad.css" />
-    <link rel="stylesheet" href="stlyes/notepadEditor.css" />
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/notepad.css" />
+    <link rel="stylesheet" href="../styles/bottomNavbar.css">
+    <link rel="stylesheet" href="../styles/notepadEditor.css"/>
+    <link rel="stylesheet" href="../styles/active.css">
   </head>
   <body>
     <header>
@@ -40,23 +43,7 @@
     </header>
 
     <main>
-      <section class="notesBox">
-        <!--      
-                    <div class="note">
-                      <div class="bookmark">
-                            <span class="bi-dot bookdot"></span>
-                            <span class="bi-bookmark bookmarkAdd"></span>
-                          </div>
-                      <div class="dateAnddeleteBtn">
-                        <div class="date">25.05.24</div>
-            
-                        <div class="delete">Delete</div>
-                      </div>
-            
-                      <div class="noteHead">Birthday</div>
-                      <div class="textNote">Lorem, adipisicing. te neque sit.</div>
-                      <div class="dateAnddeleteBtn"></div>
-                    </div> -->
+      <section class="notesBox notesBox-js">
       </section>
 
       <section class="noteEditor">
@@ -72,7 +59,7 @@
 
         <div class="inputHead">
           <div>
-            <input type="text" class="inputHeadText" placeholder="Heading..." />
+            <input type="text" class="inputHeadText  inputHeadText-js" placeholder="Heading..." />
           </div>
           <div>
             <div>Edited: 02-22-24 19:28</div>
@@ -80,11 +67,14 @@
           </div>
         </div>
 
-        <textarea class="inputNote inputNote-js"></textarea>
+        <div class="inputNoteDiv">
+          <textarea class="inputNote inputNote-js"></textarea>
+        </div>
+      
       </section>
     </main>
 
-    <footer class="navBar">
+    <footer class="bottomNavbar">
       <div>
         <span class="bi-search-heart-fill searchIcon"></span>
       </div>
@@ -109,6 +99,6 @@
       </div>
     </footer>
 
-    <script type="module" src="scripts/notepad.js"></script>
+    <script type="module" src="../scripts/notepad.js"></script>
   </body>
 </html>
