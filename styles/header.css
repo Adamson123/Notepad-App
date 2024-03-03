@@ -1,103 +1,103 @@
-
 header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 40px;
-    z-index: 2;
-    background-color: var(--main-color);
-    padding: 0 20px;
-  }
-  
-  .logoBox {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* border: 2px solid; */
-  }
-  .logo {
-    font-weight: bold;
-    font-size: 18px;
-    font-family: teko;
-    /* border: 2px solid yellow; */
-    display: flex;
-  }
-  .menuBox {
-    /* border: 2px solid red; */
-    display: flex;
-    padding: 0;
-    justify-content: end;
-  }
-  .hide {
-    display: initial;
-  }
-  .show {
-    display: none;
-  }
-  .menuBox ul li {
-    display: flex;
-    /* padding-right: 50px; */
-    list-style: none;
-    cursor: pointer;
-    padding-left: 10px;
-    font-size: 1rem;
-  }
-  
-  .menuBox ul li:hover {
-    opacity: 0.7;
-  }
-  
-  .menuBox ul li span {
-    padding-right: 5px;
-  }
-  
-  .dropMenuIcon {
-    font-weight: bold;
-    font-size: 20px;
-    padding-right: 10px;
-    cursor: pointer;
-  }
-  
-  .dropMenu {
-    position: fixed;
-    bottom: 0;
-    top: 50px;
-    right: 20px;
-    width: 200px;
-    height: 150px;
-    z-index: 999;
-    border-radius: 5px;
-    background: var(--notes-color);
-    display: none;
-    padding-bottom: 30px;
-  }
-  
-  .dropMenu ul {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0;
-  }
-  .dropMenu ul li {
-    height: 60px;
-    list-style: none;
-    cursor: pointer;
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
-  }
-  .dropMenu ul li:hover {
-    opacity: 0.7;
-  }
-  
-  .dropMenu ul li span {
-    padding-right: 5px;
-  }
-  .journal {
-    margin-top: 2px;
-    margin-left: 3px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 40px;
+  z-index: 2;
+  background-color: var(--main-color);
+  padding: 0 20px;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* border: 2px solid; */
+}
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  font-family: teko;
+  /* border: 2px solid yellow; */
+  display: flex;
+}
+.menuBox {
+  /* border: 2px solid red; */
+  display: flex;
+  padding: 0;
+  justify-content: end;
+}
+.hide {
+  display: initial;
+}
+.show {
+  display: none;
+}
+.menuBox ul li {
+  display: flex;
+  /* padding-right: 50px; */
+  list-style: none;
+  cursor: pointer;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+
+.menuBox ul li:hover {
+  opacity: 0.7;
+}
+
+.menuBox ul li span {
+  padding-right: 5px;
+}
+
+.dropMenuIcon {
+  font-weight: bold;
+  font-size: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.dropMenu {
+  position: fixed;
+  bottom: 0;
+  top: 50px;
+  right: 20px;
+  width: 200px;
+  height: 150px;
+  z-index: 999;
+  border-radius: 5px;
+  background: var(--notes-color);
+  display: none;
+  padding-bottom: 30px;
+}
+
+.dropMenu ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+.dropMenu ul li {
+  height: 60px;
+  list-style: none;
+  cursor: pointer;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.dropMenu ul li:hover {
+  opacity: 0.7;
+}
+
+.dropMenu ul li span {
+  padding-right: 5px;
+}
+.journal {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+

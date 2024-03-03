@@ -1,22 +1,22 @@
-:root {
-  --main-color: rgb(22, 21, 21);
-  --sec-color: rgb(241, 108, 108);
-  --notes-color: rgb(42, 40, 40);
-  --notes-text-color: rgb(94, 91, 91);
-  --date-color: rgb(193, 185, 185);
+/* @keyframes dissappear {
+  0% {
+   transform: translateX(0);
+  }
+  100% {
+   transform: translateX(100%);
+  }
 }
 
-@font-face {
-  font-family: teko;
-  src: url(/Fonts/Ubuntu-Regular.ttf);
-}
+@keyframes appear {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+} */
 
-@font-face {
-  font-family: robotoc;
-  src: url(/Fonts/RobotoCondensed-Regular.ttf);
-}
-
-.noteEditor{
+.noteEditor {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -25,11 +25,17 @@
   z-index: 999;
   padding-top: 170px;
   overflow: auto;
-  display: none;
   background-color: var(--main-color);
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  transform: translateX(100%);
+
+  
+  transition: transform 0.5s;
+
 }
 
-.noteEditor::-webkit-scrollbar{
+.noteEditor::-webkit-scrollbar {
   display: none;
 }
 body::-webkit-scrollbar {
@@ -68,7 +74,6 @@ body::-webkit-scrollbar {
 .inputHead > div:first-child {
   height: 30px;
   margin-bottom: 15px;
-
 }
 .inputHead > div:nth-child(2) {
   display: flex;
@@ -80,7 +85,6 @@ body::-webkit-scrollbar {
   padding-bottom: 25px;
   padding-left: 2px;
   font-weight: bold;
-
 }
 .inputHeadText {
   width: 100%;
@@ -91,7 +95,7 @@ body::-webkit-scrollbar {
   color: white;
   outline: none;
 }
-.inputNoteDiv{
+.inputNoteDiv {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -102,12 +106,13 @@ body::-webkit-scrollbar {
   margin-top: 0;
   width: calc(100% - 40px);
   outline: none;
-  font-size: 17px;
+  font-size: 15px;
   background-color: var(--main-color);
   border: none;
   color: white;
   height: 100%;
   transform: translateX(-3px);
+  word-break: break-all;
 }
 .inputNote::-webkit-scrollbar {
   display: none;
@@ -115,7 +120,7 @@ body::-webkit-scrollbar {
 .keyboardBtn {
   position: fixed;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 50px;
   height: 50px;
   border-radius: 50%;

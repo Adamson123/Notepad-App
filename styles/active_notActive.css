@@ -1,0 +1,31 @@
+.active {
+  display: initial;
+}
+.not-active {
+  display: none;
+}
+
+.active_sec {
+  opacity: 1;
+  pointer-events: all;
+}
+.not-active_sec {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.new-active {
+  /* display: flex; */
+
+  /* animation: appear 0.5s 1; */
+  transform: translateX(0);
+  /* animation: dissapear 1s infinite;  */
+}
+
+.new-not-active {
+  /* display: none;  */
+  /* animation: dissappear 0.5s 1; */
+  /* animation: dissappear 0.5s 1; */
+  transform: translateX(100%);
+}

@@ -41,3 +41,26 @@
   right: 50%;
   bottom: 10%;
   transform: translate(50%, 10%);
+
+
+  /* .checkNote::after {
+  content: "";
+  background-color: var(--notes-color);
+  position: absolute;
+  right: 3px;
+  left: 4px;
+  top: 3px;
+  bottom: 3.1px;
+  border-radius: 3px;
+  pointer-events: none;
+
+} */
+
+{
+    index:0,
+    header: "ok",
+    note: "kkkkk🧑",
+    dateCreated: `${date}`,
+    dateEdited: `${date}`,
+    checked : false,
+}
