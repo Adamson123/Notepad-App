@@ -11,7 +11,7 @@ XPAD is a practice project aimed at honing my full-stack development skills. My 
   - Bold
   - Header
   - Underline
-  - MultiSelect to delete bin
+  - MultiSelect to delete
   - Restore and confirm delete bin
   - Search Notes
   - and more...
