@@ -11,10 +11,14 @@ XPAD is a practice project aimed at honing my full-stack development skills. My 
   - Bold
   - Header
   - Underline
-  
+  - MultiSelect to delete bin
+  - Restore and confirm delete bin
+  - Search Notes
+  - and more...
 
 ### Technologies Used:
 - HTML5, CSS3, JavaScript
+- boostrap icons
 
 ### How to Contribute:
 As a learner aspiring to become a full-stack developer, your input is invaluable. Please provide feedback and suggestions on areas where I can improve and grow. Your contributions will help me achieve my goal of mastering full-stack development.
