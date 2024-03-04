@@ -1,20 +1,3 @@
-/* @keyframes dissappear {
-  0% {
-   transform: translateX(0);
-  }
-  100% {
-   transform: translateX(100%);
-  }
-}
-
-@keyframes appear {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-} */
 
 .noteEditor {
   position: fixed;
@@ -29,8 +12,6 @@
   transition: opacity 0.3s ease-in-out;
   display: flex;
   transform: translateX(100%);
-
-  
   transition: transform 0.5s;
 
 }

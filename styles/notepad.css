@@ -187,6 +187,7 @@ body::-webkit-scrollbar {
 .checkNote{
   display: none;
 }
+
 @media (min-width: 625px) {
   .notesBox {
     grid-template-columns: 25% 25% 25% 25%;

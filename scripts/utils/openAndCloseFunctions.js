@@ -1,23 +1,29 @@
 export function showElement(element, active, notActive) {
-  element.classList.remove(notActive);
   element.classList.add(active);
+  // element.classList.add(active);
 }
 
-export function hideElement(element, notActive , active) {
+export function hideElement(element, active) {
   element.classList.remove(active);
-  element.classList.add(notActive);
-
+  // element.classList.add(notActive);
 }
 
 export function toggleElement(element, active) {
   element.classList.toggle("active");
 }
 
-
-export function elementsToggleDisplay(element,firstClass,secondClass) {
-
-  document.querySelectorAll(`.${element}`).forEach((i,index) =>{
-    hideElement(i,`${firstClass}`,`${secondClass}`)
-  })
-  
+export function displayMultiElement(element, active) {
+  document.querySelectorAll(`.${element}`).forEach((i, index) => {
+    showElement(i, active);
+  });
 }
+
+export function closeMultiElement(element, active) {
+  document.querySelectorAll(`.${element}`).forEach((i, index) => {
+    hideElement(i, active);
+  });
+}
+
+// export function setElementValue(element, value) {
+//   element = value;
+// }
