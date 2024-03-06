@@ -5,19 +5,22 @@
   display: none;
 }
 
-/* .active_sec {
-  opacity: 1;
-  pointer-events: all;
-}
-.not-active_sec {
-  opacity: 0;
-  pointer-events: none;
-} */
-
 .new-active {
   transform: translateX(0);
 }
 
 .new-not-active {
   transform: translateX(100%);
+}
+.delete {
+  animation: decrease 0.6s 1;
+}
+
+@keyframes decrease {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
 }

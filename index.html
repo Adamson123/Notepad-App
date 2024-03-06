@@ -44,15 +44,18 @@
         <ul>
           <li class="bi-x cancel cancel-js"></li>
           <li><span class="countCheckedNote">0</span> &nbsp;selected</li>
-          <li>delete</li>
+          <li class="deleteAll deleteAll-js">delete</li>
         </ul>
       </div>
     </header>
 
     <main>
+      <!--The div that will display all notes-->
       <section class="notesBox notesBox-js">
+        
       </section>
 
+         <!--The div that will display the noteEditor-->
       <section class="noteEditor">
         <header class="editorHeader">
           <div>
@@ -66,7 +69,7 @@
 
         <div class="inputHead">
           <div>
-            <input type="text" class="inputHeadText  inputHeadText-js" placeholder="Heading..." />
+            <input type="text" class="inputHeadText  inputHeadText-js" placeholder="Title..." />
           </div>
           <div>
             <div>Created: <span class="created"></span>  &nbsp Last Edited: <span class="edited"></span></div>
@@ -78,6 +81,13 @@
           <div class="inputNote inputNote-js" contenteditable="true"></div>
         </div>
       
+        <div class="editorBottomBar">
+          <div>
+            <span>B</span>
+            <span>U</span>
+            <span><i>I</i></span>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -91,8 +101,8 @@
 
       <button class="addBtn openEditorBtn">
         <span class="bi-plus"></span>
-        <span class="back"></span>
-        <span class="back"></span>
+       <span class="back"></span>
+       <!--   <span class="back"></span> -->
       </button>
 
       <div>

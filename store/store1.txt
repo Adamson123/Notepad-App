@@ -64,3 +64,13 @@
     dateEdited: `${date}`,
     checked : false,
 }
+/* .addBtn > span:nth-child(3) {
+  position: absolute;
+  width: 52px;
+  height: 54px;
+  background-color: var(--sec-color);
+  border-radius: 50%;
+  z-index: -3;
+  clip-path: circle(100% at 50% -50%);
+  border: 5px solid var(--navbar-border);
+} */

@@ -47,7 +47,7 @@ header {
 }
 
 .menuBox ul li:hover {
-  opacity: 0.7;
+  color: var(--sec-color);
 }
 
 .menuBox ul li span {
@@ -90,7 +90,7 @@ header {
   align-items: center;
 }
 .dropMenu ul li:hover {
-  opacity: 0.7;
+  color: var(--sec-color);
 }
 
 .dropMenu ul li span {
@@ -129,4 +129,7 @@ header {
   font-size: 25px;
   cursor: pointer;
   margin-top: 4px;
+}
+.deleteAll{
+  cursor: pointer;
 }

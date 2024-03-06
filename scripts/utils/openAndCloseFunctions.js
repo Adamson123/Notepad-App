@@ -1,11 +1,11 @@
-export function showElement(element, active, notActive) {
+export function showElement(element, active) {
   element.classList.add(active);
-  // element.classList.add(active);
+  
 }
 
 export function hideElement(element, active) {
   element.classList.remove(active);
-  // element.classList.add(notActive);
+  
 }
 
 export function toggleElement(element, active) {
@@ -24,6 +24,3 @@ export function closeMultiElement(element, active) {
   });
 }
 
-// export function setElementValue(element, value) {
-//   element = value;
-// }
