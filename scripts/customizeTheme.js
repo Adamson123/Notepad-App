@@ -40,6 +40,7 @@ export function customizeTheme() {
   renderSecondColor();
 }
 
+
 function customizeColor() {
   const customizeThemeMenu = document.querySelector(".customizeThemeMenu-js");
   showElement(customizeThemeMenu, "customizeThemeActive");

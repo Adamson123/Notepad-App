@@ -7,8 +7,9 @@ import {
 
 export const onSelectMenu = document.querySelector(".onSelectMenu-js");
 
+ //checks and unchecks notes 
 export function checksAndUnchecksNote(index) {
-  //checking and unchecking notes checkbox
+ 
 
   if (notes[index].checked === true) {
     notes[index].checked = false;

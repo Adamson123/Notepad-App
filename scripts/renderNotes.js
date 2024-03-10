@@ -21,45 +21,45 @@ const date = `${getDate("sec")}:${getDate("minute")}:${getDate("year")}`;
 export const notesBox = document.querySelector(".notesBox");
 
 export let notes = [
-  {
-    index: 1,
-    header: "Food",
-    note: "king kong king okg kog",
-    dateCreated: `${date}`,
-    dateEdited: `${date}`,
-    checked: false,
-  },
+  // {
+  //   index: 1,
+  //   header: "Food",
+  //   note: "king kong king okg kog",
+  //   dateCreated: `${date}`,
+  //   dateEdited: `${date}`,
+  //   checked: false,
+  // },
 
-  {
-    index: 1,
-    header: "Food",
-    note: `king kong king okg kog king kong king okg kog king kong king okg 
-      kog king kong king okg kog king kong king okg kog
-      kog king kong king okg kog king kong king okg 
-      kog king kong king okg kog king kong king okg kog
-      `,
+  // {
+  //   index: 1,
+  //   header: "Food",
+  //   note: `king kong king okg kog king kong king okg kog king kong king okg 
+  //     kog king kong king okg kog king kong king okg kog
+  //     kog king kong king okg kog king kong king okg 
+  //     kog king kong king okg kog king kong king okg kog
+  //     `,
 
-    dateCreated: `${date}`,
-    dateEdited: `${date}`,
-    checked: false,
-  },
+  //   dateCreated: `${date}`,
+  //   dateEdited: `${date}`,
+  //   checked: false,
+  // },
 
-  {
-    index: 1,
-    header: "Food",
-    note: "king kong king okg kog",
-    dateCreated: `${date}`,
-    dateEdited: `${date}`,
-    checked: false,
-  },
-  {
-    index: 1,
-    header: "Food",
-    note: "king kong king okg kog",
-    dateCreated: `${date}`,
-    dateEdited: `${date}`,
-    checked: false,
-  },
+  // {
+  //   index: 1,
+  //   header: "Food",
+  //   note: "king kong king okg kog",
+  //   dateCreated: `${date}`,
+  //   dateEdited: `${date}`,
+  //   checked: false,
+  // },
+  // {
+  //   index: 1,
+  //   header: "Food",
+  //   note: "king kong king okg kog",
+  //   dateCreated: `${date}`,
+  //   dateEdited: `${date}`,
+  //   checked: false,
+  // },
 ];
 
 
