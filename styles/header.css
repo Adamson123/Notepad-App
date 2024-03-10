@@ -6,9 +6,9 @@ header {
   left: 0;
   right: 0;
   top: 0;
-  height: 40px;
+  height: 50px;
   z-index: 2;
-  background-color: var(--main-color);
+  background: var(--main-color);
   padding: 0 20px;
 }
 
@@ -44,10 +44,13 @@ header {
   cursor: pointer;
   padding-left: 10px;
   font-size: 1rem;
+  transition: transform 0.2s ease-out;
 }
 
 .menuBox ul li:hover {
-  color: var(--sec-color);
+  background: var(--sec-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .menuBox ul li span {
@@ -88,9 +91,12 @@ header {
   padding-left: 20px;
   display: flex;
   align-items: center;
+  transition: transform 0.2s ease-out;
 }
 .dropMenu ul li:hover {
-  color: var(--sec-color);
+  background: var(--sec-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .dropMenu ul li span {
@@ -101,21 +107,21 @@ header {
   margin-left: 3px;
 }
 
-.onSelectMenu{
+.onSelectMenu {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  background-color: var(--sec-color);
+  background: var(--sec-color);
   display: flex;
   align-items: center;
   height: 50px;
   padding: 0 70px 0 20px;
-  /* background-color: red; */
+  /* background: red; */
   transform: translateX(100%);
   transition: transform 0.5s;
 }
-.onSelectMenu ul{
+.onSelectMenu ul {
   width: 250px;
   display: flex;
   justify-content: space-between;
@@ -124,12 +130,104 @@ header {
   padding: 0;
 }
 
-
-.cancel{
+.cancel {
   font-size: 25px;
   cursor: pointer;
   margin-top: 4px;
 }
-.deleteAll{
+.deleteAll {
   cursor: pointer;
+}
+
+.customizeThemeMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  background: var(--sec-color);
+  padding: 10px;
+  align-items: center;
+  font-size: 11px;
+  justify-content: space-between;
+  padding: 5px 10px 10px 10px;
+  transform: translateY(-110%); 
+  transition: transform 0.5s;
+  box-sizing: border-box;
+}
+.customizeThemeMenu input {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  border: none;
+
+}
+ /* .customizeThemeMenu input::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+
+.customizeThemeMenu div > div:nth-child(3) input::before {
+  background: var(--main-color);
+}
+
+.customizeThemeMenu div > div:nth-child(4) input::before {
+  background: var(--text-color);
+}
+
+.customizeThemeMenu div > div:nth-child(5) input::before {
+  background: var(--notes-color);
+}   */
+.customizeThemeMenu_sec {
+  display: grid;
+  /* grid-template-columns: 30px 100 1fr 1fr 1fr; */
+  grid-template-columns: 1fr;
+  gap: 10px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.customizeThemeMenu_sec .customizeTheme_secChild {
+  display: flex;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+
+}
+.customizeThemeMenu_sec > div:first-child {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 3px);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.addNewColor {
+  background: rgb(63, 59, 59);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
 }

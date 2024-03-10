@@ -8,11 +8,12 @@
       rel="stylesheet"
       href="bootstrap-icons-1.11.3/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="styles/header.css">
+
+    <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/notepad.css" />
-    <link rel="stylesheet" href="styles/bottomNavbar.css">
-    <link rel="stylesheet" href="styles/notepadEditor.css"/>
-    <link rel="stylesheet" href="styles/active_notActive.css">
+    <link rel="stylesheet" href="styles/bottomNavbar.css" />
+    <link rel="stylesheet" href="styles/notepadEditor.css" />
+    <link rel="stylesheet" href="styles/active_notActive.css" />
   </head>
   <body>
     <header>
@@ -23,8 +24,12 @@
 
       <div class="menuBox editMenubox">
         <ul class="show">
-          <li class="multiselect"><span class="bi-check-square"></span>Select</li>
-          <li><span class="bi-grid"></span>View</li>
+          <li class="multiselect">
+            <span class="bi-check-square"></span>Select
+          </li>
+          <li class="customizeTheme">
+            <span class="bi-grid"></span>Customize Theme
+          </li>
           <li><span class="bi-chat"></span>Feedback</li>
         </ul>
         <span
@@ -34,8 +39,12 @@
 
       <div class="dropMenu dropMenu-js">
         <ul>
-          <li class="multiselect_2"><span class="bi-check-square"></span>Select</li>
-          <li><span class="bi-grid"></span>View</li>
+          <li class="multiselect">
+            <span class="bi-check-square"></span>Select
+          </li>
+          <li class="customizeTheme">
+            <span class="bi-grid"></span>Customize Theme
+          </li>
           <li><span class="bi-chat"></span>Feedback</li>
         </ul>
       </div>
@@ -47,15 +56,40 @@
           <li class="deleteAll deleteAll-js">delete</li>
         </ul>
       </div>
+
+      <div class="customizeThemeMenu customizeThemeMenu-js">
+        <div class="customizeThemeMenu_sec">
+          <div class="hideCustomTheme">
+            <span class="bi-x"></span>
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Second color</label>
+            <div class="allSecColors"></div>
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Background color</label>
+            <input type="color" class="bgColor" />
+          </div>
+          <div class="customizeTheme_secChild">
+            <label for="">Note color</label>
+            <input type="color" class="noteColor" />
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Text color</label>
+            <input type="color" class="textColor" />
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
       <!--The div that will display all notes-->
-      <section class="notesBox notesBox-js">
-        
-      </section>
+      <section class="notesBox notesBox-js"></section>
 
-         <!--The div that will display the noteEditor-->
+      <!--The div that will display the noteEditor-->
       <section class="noteEditor">
         <header class="editorHeader">
           <div>
@@ -69,10 +103,17 @@
 
         <div class="inputHead">
           <div>
-            <input type="text" class="inputHeadText  inputHeadText-js" placeholder="Title..." />
+            <input
+              type="text"
+              class="inputHeadText inputHeadText-js"
+              placeholder="Title..."
+            />
           </div>
           <div>
-            <div>Created: <span class="created"></span>  &nbsp Last Edited: <span class="edited"></span></div>
+            <div class="C-Ldate">
+              Created: <span class="created"></span> &nbsp Last Edited:
+              <span class="edited"></span>
+            </div>
             <span class="bi-calendar"></span>
           </div>
         </div>
@@ -80,7 +121,7 @@
         <div class="inputNoteDiv">
           <div class="inputNote inputNote-js" contenteditable="true"></div>
         </div>
-      
+
         <div class="editorBottomBar">
           <div>
             <span>B</span>
@@ -95,22 +136,16 @@
       <div>
         <span class="bi-search-heart-fill searchIcon"></span>
       </div>
-      <!-- <div>
-            <span class="bi-tag"></span>
-        </div> -->
 
       <button class="addBtn openEditorBtn">
         <span class="bi-plus"></span>
-       <span class="back"></span>
-       <!--   <span class="back"></span> -->
+        <span class="back"></span>
       </button>
 
       <div>
         <span class="bi-book-fill bookIcon"></span>
       </div>
-      <!-- <div>
-            <span class="bi-bookmark"></span>
-        </div> -->
+
       <div>
         <span class="bi-trash-fill trashIcon"></span>
       </div>

@@ -1,10 +1,20 @@
 :root {
-  --main-color: rgb(22, 21, 21);
-  --sec-color: rgb(241, 108, 108);
-  --notes-color: rgb(42, 40, 40);
-  --notes-text-color: rgb(94, 91, 91);
-  --date-color: rgb(193, 185, 185);
-  --navbar-border: rgba(219, 255, 255, 0.3);
+  --main-color: #151414;
+  /* --sec-color: rgb(241, 108, 108);  */
+  --sec-color: linear-gradient(
+    90deg,
+    #50e6f1 0%,
+    #a6a6de 50%,
+    #ed91d0 100%
+  );
+  --text-color: white;
+  --notes-color: #2a2828;
+  --notes-text-color: #5e5a5a;
+  --date-color: #c1b9b9;
+  --navbar-border: #dbffff4d;
+  --grid: 50% 50%;
+  --sec-grid: 25% 25% 25% 25%;
+  
 }
 
 @font-face {
@@ -18,11 +28,11 @@
 }
 
 body {
-  background-color: var(--main-color);
+  background: var(--main-color);
   font-family: teko;
-  color: white;
+  color: var(--text-color);
   margin: 0;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 100px;
   min-height: 100vh;
 }
@@ -31,24 +41,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* body::before{
-  content: "";
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 0;
-  background-color: var(--sec-color);
-  clip-path: polygon(
-    70% 0,
-    100% 0,
-    100% 100%,
-    38% 100%
-  );
-} */
 .notesBox {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: var(--grid);
   column-gap: 15px;
   row-gap: 15px;
   align-content: center;
@@ -56,9 +51,8 @@ body::-webkit-scrollbar {
   margin-top: 30px;
   overflow: auto;
   padding: 25px;
-  
+  transition: transform 0.5s;
 }
-
 
 .notesBox::-webkit-scrollbar {
   display: none;
@@ -67,23 +61,21 @@ body::-webkit-scrollbar {
   height: auto;
   box-sizing: border-box;
   border-radius: 5px;
-  background-color: var(--notes-color);
-  padding: 10px 10px 10px 15px;
+  background: var(--notes-color);
+  padding: 10px 10px 10px 20px;
   position: relative;
-  border: 2px solid var(--sec-color);
+  /* border: 3px solid var(--sec-color);    */
   border-left: none;
 }
 
 .note::before {
   content: "";
   position: absolute;
-  
-  width: 7px;
-  background-color: var(--sec-color);
-  
-  top: 0px;
-  bottom: 0;
-  left: 0px;
+  width: 10px;
+  background: var(--sec-color);
+  top: -0.2px;
+  bottom: -0.2px;
+  left: -3px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -93,15 +85,16 @@ body::-webkit-scrollbar {
   text-align: left;
   font-size: 13px;
   font-family: robotoc, Arial;
+  color: var(--text-color);
 }
 .textNote {
-  height: 50px;
+  height: 47px;
   overflow: hidden;
   cursor: pointer;
   font-size: 10px;
   margin-top: 10px;
   line-height: 15px;
-  color: white;
+  color: var(--text-color);
   position: relative;
   word-wrap: break-word;
 }
@@ -112,7 +105,7 @@ body::-webkit-scrollbar {
   left: 0;
   right: 0;
   bottom: -2px;
-  background-image: linear-gradient(to bottom, transparent, rgb(45, 44, 44));
+  background: linear-gradient(to bottom, transparent, var(--notes-color));
   height: 150%;
 }
 .textNote::-webkit-scrollbar {
@@ -122,18 +115,26 @@ body::-webkit-scrollbar {
   display: flex;
   font-size: 12px;
   justify-content: space-between;
-  border-bottom: 1px solid var(--sec-color);
+  /* border-bottom: 1px solid var(--sec-color); */
   padding: 10px 0;
   flex-direction: column;
+  position: relative;
 }
-
+.dateDiv::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--sec-color);
+}
 .dateDiv div {
   color: var(--date-color);
   font-weight: bold;
   font-size: 8px;
-  
 }
-.trashAndCheckNoteDiv{
+.trashAndCheckNoteDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,35 +147,37 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.trashAndCheckNoteDiv > span:first-child{
+.trashAndCheckNoteDiv > span:first-child {
   font-size: 18px;
 }
 .trashAndCheckNoteDiv > span:first-child:hover {
-  color: var(--sec-color);
+  /* color: var(--sec-color); */
+  background: var(--sec-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .checkNote {
   position: relative;
   isolation: isolate;
-  margin-bottom: 1px ;
+  margin-bottom: 1px;
   height: 17px;
   width: 17px;
-
 }
 .checkNote::before {
   content: "";
-  background-color: var(--notes-color);
+  background: var(--notes-color);
   position: absolute;
   right: 0px;
   left: 2px;
   top: 1px;
   bottom: 0px;
-  border: 2px solid white;
+  border: 2px solid var(--text-color);
   border-radius: 3px;
   z-index: -1;
 }
 
-.check{
+.check {
   position: absolute;
   right: 4px;
   top: 3px;
@@ -182,36 +185,31 @@ body::-webkit-scrollbar {
   z-index: 2;
   pointer-events: none;
   opacity: 0;
-
 }
-.checkActive{
+.checkActive {
   opacity: 1;
   position: absolute;
-  /* right: 4px;
-  top: 3px; */
-
   transform: translate(-50%, -50%);
-  top : 50%;
+  top: 50%;
   left: 50%;
   font-weight: bold;
   z-index: 2;
   pointer-events: none;
-  
 }
-.checkNoteBox{
+.checkNoteBox {
   pointer-events: all;
   cursor: pointer;
   opacity: 0;
 }
 
-.checkNote{
+.checkNote {
   display: none;
 }
-.noNotes{
+.noNotes {
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   font-size: 2em;
   color: rgb(91, 87, 87);
   text-wrap: nowrap;
@@ -219,7 +217,7 @@ body::-webkit-scrollbar {
 
 @media (min-width: 625px) {
   .notesBox {
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: var(--sec-grid);
     padding: 50px;
   }
 

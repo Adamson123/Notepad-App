@@ -16,6 +16,17 @@
   animation: decrease 0.6s 1;
 }
 
+
+.noteBox-active{
+  transform: translateY(200px);
+  
+}
+.customizeThemeActive{
+  transform: translateY(0);
+}
+
+
+
 @keyframes decrease {
   0% {
     scale: 1;
