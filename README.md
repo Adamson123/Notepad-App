@@ -14,6 +14,7 @@ XPAD is a practice project aimed at honing my full-stack development skills. My 
   - MultiSelect to delete
   - Restore and confirm delete bin
   - Search Notes
+  - customisable theme
   - and more...
 
 ### Technologies Used:
