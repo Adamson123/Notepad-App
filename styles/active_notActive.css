@@ -13,6 +13,14 @@
 
 .new-active {
   transform: translateX(0);
+  
+}
+.editorActive{
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(0);
 }
 
 .new-not-active {

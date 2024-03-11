@@ -1,10 +1,6 @@
 
 .noteEditor {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
   z-index: 999;
   padding-top: 170px;
   overflow: auto;
@@ -13,6 +9,7 @@
   display: flex;
   transform: translateX(100%); 
   transition: transform 0.5s;
+  
 
 }
 
@@ -26,6 +23,7 @@ body::-webkit-scrollbar {
 .hideEditorBtn {
   cursor: pointer;
   font-weight: bold;
+  font-size: 22px;
 }
 .editorHeader {
   position: absolute;

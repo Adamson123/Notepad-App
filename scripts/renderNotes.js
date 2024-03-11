@@ -84,7 +84,6 @@ export function renderNotes(parameter) {
 
       const { header, note, dateCreated, dateEdited, checked, index } = i;
 
-      console.log(i);
 
       //if there's no header to display we will take from the first word of the note
       let headAlt = header === "" ? note.split(" ")[0] : header;

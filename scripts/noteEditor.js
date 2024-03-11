@@ -15,7 +15,7 @@ export const edited = document.querySelector(".edited");
 // Function to update the edited note in the array and close the editor
 export function updateNoteAndBack(index) {
   hideEditorBtn.onclick = () => {
-    hideElement(noteEditor, "new-active");
+  hideElement(noteEditor, "editorActive");
 
     //update the edit date only of the note or head are different from the value
     // of the note and head of the html element
@@ -46,7 +46,7 @@ export function updateNoteAndBack(index) {
 
 export function eventlistenerOnOpenEditor() {
   openEditorBtn.addEventListener("click", () => {
-    showElement(noteEditor, "new-active");
+    showElement(noteEditor, "editorActive");
 
     const date = `${getDate("sec")}:${getDate("minute")}:${getDate("year")}`;
 
@@ -58,7 +58,6 @@ export function eventlistenerOnOpenEditor() {
       checked: false,
     });
 
-    console.log(notes[notes.length - 1]);
 
     created.innerHTML = date;
     edited.innerHTML = date;
