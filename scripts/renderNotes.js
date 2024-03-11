@@ -211,7 +211,7 @@ function clickEventOnNotes(multiSelecting) {
 
         created.innerHTML = dateCreated;
         edited.innerHTML = dateEdited;
-        showElement(noteEditor, "new-active");
+        showElement(noteEditor, "editorActive");
         updateNoteAndBack(dataIndex);
       } else {
         checksAndUnchecksNote(dataIndex);
