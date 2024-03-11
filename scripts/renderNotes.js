@@ -74,7 +74,7 @@ export function renderNotes(parameter) {
   }
 
   let html = "";
-  let searchBarValue = searchBar.value.trim(" ");
+  let searchBarValue = searchBar.value.trim(" ").toLocaleLowerCase();
   let foundMatch = false;
 
   //checks if there's any note availabe in the notes array
