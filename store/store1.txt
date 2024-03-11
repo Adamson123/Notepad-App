@@ -76,3 +76,93 @@
 } */
 
 
+
+
+///////////////////////////////
+
+export function renderNotes(parameter) {
+
+
+  if (parameter === false || parameter === true) {
+    multiSelecting = parameter;
+  }
+
+  let html = ""; 
+  let searchBarValue = searchBar.value.trim(' ');
+  let foundMatch = false;
+
+  //checks if there's any note availabe in the notes array
+  if (notes.length !== 0) {
+    notes.forEach((i, num) => {
+
+      i['index'] = num
+
+      const {header, note, dateCreated, dateEdited, checked , index } = i;
+
+      console.log(i);
+
+
+      //if there's no header to display we will take from the first word of the note
+      let headAlt = header === "" ? note.split(" ")[0] : header;
+
+      //shortens the first word if it's too long to contain the note header
+      let headAlt_2 =
+        headAlt.length > 35 ? headAlt.slice(0, 27).concat("...") : headAlt;
+
+      let checkClass = checked === false ? "check" : "checkActive";
+
+      let newClass;
+      if (multiSelecting === false) {
+        newClass = "not-acive";
+      } else {
+        newClass = "active";
+      }
+      if (
+        headAlt_2.toLocaleLowerCase().includes(searchBarValue) &&
+        searchBarValue !== ' '
+      ) {
+        foundMatch = true;
+        html += `
+        <div class="note uniNote${num}" data-index="${index}">
+          <div class="noteHead">${headAlt_2}</div>
+          <div class="dateDiv">
+            <div class="date">Created: ${dateCreated}</div>
+            <div>Last Edited: ${dateEdited} </div>
+          </div>
+          <div class="textNote">
+            ${note}
+          </div>
+          <div class="trashAndCheckNoteDiv">
+            <span class="bi-trash deleteBtn" data-index="${index}"></span>
+            <span class="checkNote ${newClass}"><!--<input type="checkbox" class="checkNoteBox"/>-->
+            <span class="bi-check  ${checkClass}">
+            </span>
+            </span>
+          </div>
+        </div>
+        `;
+      }
+    });
+
+    if (!foundMatch && searchBarValue !== " ") {
+      notesBox.innerHTML = `<div class='noNotes'>
+      No result found &nbsp;:(
+    </div>`;
+    } else {
+      notesBox.innerHTML = html;
+    }
+  }
+  //if there are no notes display this 👇
+  else {
+    notesBox.innerHTML = `<div class='noNotes'>
+      No notes available &nbsp;:(
+    </div>`;
+  }
+
+  clickEventOnNotes(multiSelecting);
+  clickEventOnNotesDeleteIcons();
+  eventlistenerOnMultiselectBtn();
+  eventlistenerOndeleteAllBtn();
+  searchNote();
+
+}

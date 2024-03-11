@@ -29,7 +29,6 @@ export const notesBox = document.querySelector(".notesBox-js");
 
 export let notes = [
   {
-    index: 1,
     header: "Food",
     note: "king kong king okg kog",
     dateCreated: `${date}`,
@@ -38,7 +37,6 @@ export let notes = [
   },
 
   {
-    index: 1,
     header: "Satty",
     note: `king kong king okg kog king kong king okg kog king kong king okg 
       kog king kong king okg kog king kong king okg kog
@@ -52,7 +50,6 @@ export let notes = [
   },
 
   {
-    index: 1,
     header: "Calm",
     note: "king kong king okg kog",
     dateCreated: `${date}`,
@@ -60,7 +57,6 @@ export let notes = [
     checked: false,
   },
   {
-    index: 1,
     header: "Sit",
     note: "king kong king okg kog",
     dateCreated: `${date}`,
@@ -72,20 +68,23 @@ export let notes = [
 let multiSelecting;
 
 // Function to render notes in the notes box
-export function renderNotes(multiselect) {
-  if (multiselect === true || multiselect === false) {
-    multiSelecting = multiselect;
+export function renderNotes(parameter) {
+  if (parameter === false || parameter === true) {
+    multiSelecting = parameter;
   }
 
   let html = "";
-
-  const searchBarValue = searchBar.value.trim(" ").toLowerCase();
+  let searchBarValue = searchBar.value.trim(" ");
   let foundMatch = false;
 
   //checks if there's any note availabe in the notes array
   if (notes.length !== 0) {
     notes.forEach((i, num) => {
-      const { index, header, note, dateCreated, dateEdited, checked } = i;
+      i["index"] = num;
+
+      const { header, note, dateCreated, dateEdited, checked, index } = i;
+
+      console.log(i);
 
       //if there's no header to display we will take from the first word of the note
       let headAlt = header === "" ? note.split(" ")[0] : header;
@@ -108,7 +107,7 @@ export function renderNotes(multiselect) {
       ) {
         foundMatch = true;
         html += `
-        <div class="note uniNote${num}">
+        <div class="note uniNote${num}" data-index="${index}">
           <div class="noteHead">${headAlt_2}</div>
           <div class="dateDiv">
             <div class="date">Created: ${dateCreated}</div>
@@ -118,7 +117,7 @@ export function renderNotes(multiselect) {
             ${note}
           </div>
           <div class="trashAndCheckNoteDiv">
-            <span class="bi-trash deleteBtn"></span>
+            <span class="bi-trash deleteBtn" data-index="${index}"></span>
             <span class="checkNote ${newClass}"><!--<input type="checkbox" class="checkNoteBox"/>-->
             <span class="bi-check  ${checkClass}">
             </span>
@@ -144,21 +143,25 @@ export function renderNotes(multiselect) {
     </div>`;
   }
 
+
+
   clickEventOnNotes(multiSelecting);
-  clickEventOnNotesDeleteIcons();
-  eventlistenerOnMultiselectBtn();
-  eventlistenerOndeleteAllBtn();
-  searchNote();
 
+  //for optimization while searching
+ if (parameter !== "search") {
+    
+    clickEventOnNotesDeleteIcons();
+    eventlistenerOnMultiselectBtn();
+    eventlistenerOndeleteAllBtn();
+  }
+ 
 }
-
 
 //filters notes base on search input
-function searchNote() {
-  searchBar.addEventListener("input", () => {
-    renderNotes("");
-  });
-}
+
+searchBar.addEventListener("keyup", () => {
+  renderNotes("search");
+});
 
 //toggles searchBox
 searchIcon.addEventListener("click", () => {
@@ -173,8 +176,14 @@ function clickEventOnNotesDeleteIcons() {
   document.querySelectorAll(".deleteBtn").forEach((i, index) => {
     i.onclick = (event) => {
       event.stopPropagation();
-      notes.splice(index, 1);
-      const noteOnDelete = document.querySelector(`.uniNote${index}`);
+
+      /*getting the index of the note from dataset for precise 
+      deleting of the note while searching since dataset won't be base on filtering*/
+      let dataIndex = i.dataset.index;
+
+      notes.splice(dataIndex, 1);
+
+      const noteOnDelete = document.querySelector(`.uniNote${dataIndex}`);
       showElement(noteOnDelete, "delete");
       setTimeout(() => {
         renderNotes();
@@ -184,17 +193,19 @@ function clickEventOnNotesDeleteIcons() {
   });
 }
 
-
 // Function to add click event on each note
 
 function clickEventOnNotes(multiSelecting) {
   document.querySelectorAll(".note").forEach((i, index) => {
     i.onclick = () => {
+      /*getting the index of the note from dataset for precise 
+      opening and checking of the note while searching since dataset won't be base on filtering*/
+      let dataIndex = i.dataset.index;
       if (multiSelecting === false) {
-        const note = notes[index].note;
-        const header = notes[index].header;
-        const dateCreated = notes[index].dateCreated;
-        const dateEdited = notes[index].dateEdited;
+        const note = notes[dataIndex].note;
+        const header = notes[dataIndex].header;
+        const dateCreated = notes[dataIndex].dateCreated;
+        const dateEdited = notes[dataIndex].dateEdited;
 
         inputNote.innerHTML = note;
         inputHeadText.value = header;
@@ -202,9 +213,9 @@ function clickEventOnNotes(multiSelecting) {
         created.innerHTML = dateCreated;
         edited.innerHTML = dateEdited;
         showElement(noteEditor, "new-active");
-        updateNoteAndBack(index);
+        updateNoteAndBack(dataIndex);
       } else {
-        checksAndUnchecksNote(index);
+        checksAndUnchecksNote(dataIndex);
       }
     };
   });
@@ -231,7 +242,7 @@ export function deleteAllSelectedNotes() {
 
     countCheckedNotes();
 
-    // automatically closes multiselect menu when there are nothing to delete
+    // automatically closes parameter menu when there are nothing to delete
     if (notes.length === 0) {
       hideElement(onSelectMenu, "new-active");
       renderNotes(false);

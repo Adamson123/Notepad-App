@@ -51,7 +51,6 @@ export function eventlistenerOnOpenEditor() {
     const date = `${getDate("sec")}:${getDate("minute")}:${getDate("year")}`;
 
     notes.push({
-      index: notes.length,
       header: "",
       note: "",
       dateCreated: `${date}`,
@@ -59,9 +58,12 @@ export function eventlistenerOnOpenEditor() {
       checked: false,
     });
 
+    console.log(notes[notes.length - 1]);
+
     created.innerHTML = date;
     edited.innerHTML = date;
 
+    //tells the upadateAndBack function to update the latest note added
     updateNoteAndBack(notes.length - 1);
   });
 }
