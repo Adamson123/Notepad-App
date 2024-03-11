@@ -2,11 +2,29 @@ import { showElement } from "./utils/openAndCloseFunctions.js";
 import { hideElement } from "./utils/openAndCloseFunctions.js";
 import { notesBox } from "./renderNotes.js";
 
+
+
+const mainDiv = document.querySelector('.mainDiv')
 const secondColor = [
   { color: "#50e6f1", percent: 0 },
   { color: "#a6a6de", percent: 50 },
   { color: "#ed91d0", percent: 100 },
 ];
+
+
+
+function customizeColor() {
+  const customizeThemeMenu = document.querySelector(".customizeThemeMenu-js");
+  showElement(customizeThemeMenu, "customizeThemeActive");
+  showElement(mainDiv, "noteBox-active");
+}
+
+function changeColor(element, color) {
+  const body = document.body;
+  body.style.setProperty(`${element}`, `${color}`);
+}
+
+
 
 export function customizeTheme() {
   //opens the customize theme menu
@@ -16,15 +34,19 @@ export function customizeTheme() {
     });
   });
 
-  document.querySelector(".hideCustomTheme").addEventListener("click", () => {
-    const customizeThemeMenu = document.querySelector(".customizeThemeMenu-js");
-    hideElement(customizeThemeMenu, "customizeThemeActive");
-    hideElement(notesBox, "noteBox-active");
-  });
 
   const bgColorInput = document.querySelector(".bgColor");
   const textColorInput = document.querySelector(".textColor");
   const noteColorInput = document.querySelector(".noteColor");
+
+
+
+  document.querySelector(".hideCustomTheme").addEventListener("click", () => {
+    const customizeThemeMenu = document.querySelector(".customizeThemeMenu-js");
+    hideElement(customizeThemeMenu, "customizeThemeActive");
+    hideElement(mainDiv, "noteBox-active");
+  });
+  
 
   bgColorInput.addEventListener("change", () => {
     changeColor("--main-color", bgColorInput.value);
@@ -39,19 +61,6 @@ export function customizeTheme() {
   });
   renderSecondColor();
 }
-
-
-function customizeColor() {
-  const customizeThemeMenu = document.querySelector(".customizeThemeMenu-js");
-  showElement(customizeThemeMenu, "customizeThemeActive");
-  showElement(notesBox, "noteBox-active");
-}
-
-function changeColor(element, color) {
-  const body = document.body;
-  body.style.setProperty(`${element}`, `${color}`);
-}
-
 
 function renderSecondColor() {
   let colorHtml = "";
@@ -74,6 +83,7 @@ function renderSecondColor() {
   changeColor("--sec-color", colorCss);
   onInputEventOnColors();
 }
+
 
 function onInputEventOnColors() {
   document.querySelectorAll(".secColors").forEach((i, index) => {

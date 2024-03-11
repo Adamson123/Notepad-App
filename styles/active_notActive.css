@@ -1,6 +1,12 @@
 .active {
   display: initial;
 }
+.active_sec{
+  display: grid;
+}
+.icon-active{
+  color: black;
+}
 .not-active {
   display: none;
 }

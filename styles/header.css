@@ -154,6 +154,7 @@ header {
   transform: translateY(-110%); 
   transition: transform 0.5s;
   box-sizing: border-box;
+  z-index: 999;
 }
 .customizeThemeMenu input {
   height: 20px;

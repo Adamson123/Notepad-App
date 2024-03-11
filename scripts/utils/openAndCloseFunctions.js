@@ -9,7 +9,7 @@ export function hideElement(element, active) {
 }
 
 export function toggleElement(element, active) {
-  element.classList.toggle("active");
+  element.classList.toggle(active);
 }
 
 export function displayMultiElement(element, active) {

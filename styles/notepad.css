@@ -1,12 +1,7 @@
 :root {
   --main-color: #151414;
   /* --sec-color: rgb(241, 108, 108);  */
-  --sec-color: linear-gradient(
-    90deg,
-    #50e6f1 0%,
-    #a6a6de 50%,
-    #ed91d0 100%
-  );
+  --sec-color: linear-gradient(90deg, #50e6f1 0%, #a6a6de 50%, #ed91d0 100%);
   --text-color: white;
   --notes-color: #2a2828;
   --notes-text-color: #5e5a5a;
@@ -14,7 +9,6 @@
   --navbar-border: #dbffff4d;
   --grid: 50% 50%;
   --sec-grid: 25% 25% 25% 25%;
-  
 }
 
 @font-face {
@@ -49,9 +43,12 @@ body::-webkit-scrollbar {
   align-content: center;
   justify-content: center;
   margin-top: 30px;
+  height: 100%;
   overflow: auto;
   padding: 25px;
+  padding-top: 60px;
   transition: transform 0.5s;
+ 
 }
 
 .notesBox::-webkit-scrollbar {
@@ -64,7 +61,6 @@ body::-webkit-scrollbar {
   background: var(--notes-color);
   padding: 10px 10px 10px 20px;
   position: relative;
-  /* border: 3px solid var(--sec-color);    */
   border-left: none;
 }
 
@@ -214,6 +210,43 @@ body::-webkit-scrollbar {
   color: rgb(91, 87, 87);
   text-wrap: nowrap;
 }
+
+.searchBarSection {
+  background-color: var(--main-color);
+  position: fixed;
+  top: 50px;
+  right: 0;
+  left: 0;
+  height: 50px;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  display: none; 
+
+}
+.searchBar {
+  background: var(--main-color);
+  width: 16rem;
+  padding: 0 10px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  outline: none;
+  color: white;
+}
+.searchBar::placeholder{
+  color: white;
+}
+.searchBarSectionChild{
+  padding: 1.2px;
+  background: var(--sec-color);
+  display: grid;
+  place-content: center;
+  border-radius: 4px;
+ 
+}
+
 
 @media (min-width: 625px) {
   .notesBox {

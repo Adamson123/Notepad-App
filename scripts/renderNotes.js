@@ -8,7 +8,11 @@ import {
   updateNoteAndBack,
   // dropMenu,
 } from "./noteEditor.js";
-import { showElement, hideElement } from "./utils/openAndCloseFunctions.js";
+import {
+  showElement,
+  hideElement,
+  toggleElement,
+} from "./utils/openAndCloseFunctions.js";
 
 import {
   eventlistenerOnMultiselectBtn,
@@ -18,60 +22,65 @@ import {
 } from "./multiselecting.js";
 
 const date = `${getDate("sec")}:${getDate("minute")}:${getDate("year")}`;
-export const notesBox = document.querySelector(".notesBox");
+const searchBar = document.querySelector(".searchBar-js");
+const searchBarSection = document.querySelector(".searchBarSection-js");
+const searchIcon = document.querySelector(".searchIcon-js");
+export const notesBox = document.querySelector(".notesBox-js");
 
 export let notes = [
-  // {
-  //   index: 1,
-  //   header: "Food",
-  //   note: "king kong king okg kog",
-  //   dateCreated: `${date}`,
-  //   dateEdited: `${date}`,
-  //   checked: false,
-  // },
+  {
+    index: 1,
+    header: "Food",
+    note: "king kong king okg kog",
+    dateCreated: `${date}`,
+    dateEdited: `${date}`,
+    checked: false,
+  },
 
-  // {
-  //   index: 1,
-  //   header: "Food",
-  //   note: `king kong king okg kog king kong king okg kog king kong king okg 
-  //     kog king kong king okg kog king kong king okg kog
-  //     kog king kong king okg kog king kong king okg 
-  //     kog king kong king okg kog king kong king okg kog
-  //     `,
+  {
+    index: 1,
+    header: "Satty",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+      kog king kong king okg kog king kong king okg kog
+      kog king kong king okg kog king kong king okg 
+      kog king kong king okg kog king kong king okg kog
+      `,
 
-  //   dateCreated: `${date}`,
-  //   dateEdited: `${date}`,
-  //   checked: false,
-  // },
+    dateCreated: `${date}`,
+    dateEdited: `${date}`,
+    checked: false,
+  },
 
-  // {
-  //   index: 1,
-  //   header: "Food",
-  //   note: "king kong king okg kog",
-  //   dateCreated: `${date}`,
-  //   dateEdited: `${date}`,
-  //   checked: false,
-  // },
-  // {
-  //   index: 1,
-  //   header: "Food",
-  //   note: "king kong king okg kog",
-  //   dateCreated: `${date}`,
-  //   dateEdited: `${date}`,
-  //   checked: false,
-  // },
+  {
+    index: 1,
+    header: "Calm",
+    note: "king kong king okg kog",
+    dateCreated: `${date}`,
+    dateEdited: `${date}`,
+    checked: false,
+  },
+  {
+    index: 1,
+    header: "Sit",
+    note: "king kong king okg kog",
+    dateCreated: `${date}`,
+    dateEdited: `${date}`,
+    checked: false,
+  },
 ];
 
-
 let multiSelecting;
-// Function to render notes in the notes box
 
+// Function to render notes in the notes box
 export function renderNotes(multiselect) {
   if (multiselect === true || multiselect === false) {
     multiSelecting = multiselect;
   }
 
   let html = "";
+
+  const searchBarValue = searchBar.value.trim(" ").toLowerCase();
+  let foundMatch = false;
 
   //checks if there's any note availabe in the notes array
   if (notes.length !== 0) {
@@ -81,7 +90,7 @@ export function renderNotes(multiselect) {
       //if there's no header to display we will take from the first word of the note
       let headAlt = header === "" ? note.split(" ")[0] : header;
 
-      //shortens the first word if it's too long
+      //shortens the first word if it's too long to contain the note header
       let headAlt_2 =
         headAlt.length > 35 ? headAlt.slice(0, 27).concat("...") : headAlt;
 
@@ -93,8 +102,12 @@ export function renderNotes(multiselect) {
       } else {
         newClass = "active";
       }
-
-      html += `
+      if (
+        headAlt_2.toLocaleLowerCase().includes(searchBarValue) &&
+        searchBarValue !== " "
+      ) {
+        foundMatch = true;
+        html += `
         <div class="note uniNote${num}">
           <div class="noteHead">${headAlt_2}</div>
           <div class="dateDiv">
@@ -113,9 +126,16 @@ export function renderNotes(multiselect) {
           </div>
         </div>
         `;
+      }
     });
 
-    notesBox.innerHTML = html;
+    if (!foundMatch && searchBarValue !== " ") {
+      notesBox.innerHTML = `<div class='noNotes'>
+      No result found &nbsp;:(
+    </div>`;
+    } else {
+      notesBox.innerHTML = html;
+    }
   }
   //if there are no notes display this 👇
   else {
@@ -126,10 +146,27 @@ export function renderNotes(multiselect) {
 
   clickEventOnNotes(multiSelecting);
   clickEventOnNotesDeleteIcons();
-  clickEventOnNotesCheckBoxs();
   eventlistenerOnMultiselectBtn();
   eventlistenerOndeleteAllBtn();
+  searchNote();
+
 }
+
+
+//filters notes base on search input
+function searchNote() {
+  searchBar.addEventListener("input", () => {
+    renderNotes("");
+  });
+}
+
+//toggles searchBox
+searchIcon.addEventListener("click", () => {
+  toggleElement(searchBarSection, "active_sec");
+  toggleElement(searchIcon, "icon-active");
+  searchBar.value = "";
+  renderNotes("");
+});
 
 //adding evemtlistener to  all  deleteBtn
 function clickEventOnNotesDeleteIcons() {
@@ -147,19 +184,6 @@ function clickEventOnNotesDeleteIcons() {
   });
 }
 
-//adding eventlistener to all multiselect checkbox
-
-function clickEventOnNotesCheckBoxs() {
-  document.querySelectorAll(".checkNote").forEach((i, index) => {
-    i.addEventListener("click", (event) => {
-      event.stopPropagation();
-
-      //calling the function that checks and unchecks notes
-      checksAndUnchecksNote(index);
-    });
-  });
-}
-
 
 // Function to add click event on each note
 
@@ -172,7 +196,7 @@ function clickEventOnNotes(multiSelecting) {
         const dateCreated = notes[index].dateCreated;
         const dateEdited = notes[index].dateEdited;
 
-        inputNote.textContent = note;
+        inputNote.innerHTML = note;
         inputHeadText.value = header;
 
         created.innerHTML = dateCreated;
@@ -207,7 +231,7 @@ export function deleteAllSelectedNotes() {
 
     countCheckedNotes();
 
-    // automatically closing multiselect menu when there are nothing to delete
+    // automatically closes multiselect menu when there are nothing to delete
     if (notes.length === 0) {
       hideElement(onSelectMenu, "new-active");
       renderNotes(false);

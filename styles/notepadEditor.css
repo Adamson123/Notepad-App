@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
   font-weight: bold;
 }
 .editorHeader {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
@@ -38,6 +38,7 @@ body::-webkit-scrollbar {
   padding: 15px 20px;
   background: var(--main-color);
   color: var(--text-color);
+  z-index: 999;
 }
 .editorHeader > div:nth-child(2) {
   display: flex;
