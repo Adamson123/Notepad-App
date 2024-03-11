@@ -4,7 +4,7 @@ import getDate from "./utils/date.js";
 import { notes , renderNotes} from "./renderNotes.js";
 
 // Selecting elements from the DOM
-const openEditorBtn = document.querySelector(".openEditorBtn");
+const openEditorBtn = document.querySelector(".openEditorBtn-js");
 const hideEditorBtn = document.querySelector(".hideEditorBtn-js");
 export const noteEditor = document.querySelector(".noteEditor");
 export const inputNote = document.querySelector(".inputNote-js");

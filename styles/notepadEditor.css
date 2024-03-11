@@ -42,6 +42,11 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   width: 15%;
+  
+}
+.C-Ldate{
+  opacity: 0.6;
+  font-size: 11px;
 }
 
 .inputHead {
@@ -52,6 +57,7 @@ body::-webkit-scrollbar {
   top: 35px;
   background: var(--main-color);
 }
+
 .inputHead > div:first-child {
   height: 30px;
   margin-bottom: 15px;
@@ -78,7 +84,9 @@ body::-webkit-scrollbar {
 }
 .inputHeadText::placeholder{
   color: var(--text-color);
+
 }
+
 .inputNoteDiv {
   width: 100%;
   display: flex;
