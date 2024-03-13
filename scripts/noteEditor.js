@@ -48,7 +48,7 @@ export function eventlistenerOnOpenEditor() {
   openEditorBtn.addEventListener("click", () => {
     showElement(noteEditor, "editorActive");
 
-    const date = `${getDate("sec")}:${getDate("minute")}:${getDate("day")}`;
+    const date = `${getDate("hour")}:${getDate("day")}:${getDate("year")}`;
 
     notes.push({
       header: "",
