@@ -21,7 +21,7 @@ import {
   onSelectMenu,
 } from "./multiselecting.js";
 
-const date = `${getDate("sec")}:${getDate("minute")}:${getDate("day")}`;
+const date = `${getDate("hour")}:${getDate("day")}:${getDate("year")}`;
 const searchBar = document.querySelector(".searchBar-js");
 const searchBarSection = document.querySelector(".searchBarSection-js");
 const searchIcon = document.querySelector(".searchIcon-js");
