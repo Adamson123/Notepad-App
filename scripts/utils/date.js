@@ -4,7 +4,7 @@ function getDate(time) {
   if (time === "year") {
     return today.getFullYear().toString().slice(2);
   } else if (time === "day") {
-    return today.getDays();
+    return today.getDay();
   } else if (time === "hour") {
     return today.getHours();
   } else if (time === "minute") {
