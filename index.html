@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/bottomNavbar.css" />
     <link rel="stylesheet" href="styles/notepadEditor.css" />
     <link rel="stylesheet" href="styles/active_notActive.css" />
+    <link rel="stylesheet" href="styles/deletedNotes.css">
   </head>
   <body>
     <header>
@@ -52,8 +53,9 @@
       <div class="onSelectMenu onSelectMenu-js">
         <ul>
           <li class="bi-x cancel cancel-js"></li>
-          <li><span class="countCheckedNote">0</span> &nbsp;selected</li>
-          <li class="deleteAll deleteAll-js">delete</li>
+          <li><span class="countCheckedNote">0</span> &nbsp;Selected</li>
+          <li>Select All <span class="bi-square checkAllBox"></span></li>
+          <li class="deleteAll deleteAll-js">Delete</li>
         </ul>
       </div>
 
@@ -137,6 +139,10 @@
             <span><i>I</i></span>
           </div>
         </div>
+      </section>
+
+      <section class="deletedNotes">
+
       </section>
     </main>
 

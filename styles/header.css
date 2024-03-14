@@ -122,14 +122,22 @@ header {
   transition: transform 0.5s;
 }
 .onSelectMenu ul {
-  width: 250px;
+  width: 400px;
   display: flex;
   justify-content: space-between;
   list-style: none;
   align-items: center;
   padding: 0;
 }
-
+.onSelectMenu ul > li:nth-child(3){
+  display: flex;
+  width: 90px;
+  justify-content: space-between;
+  text-align: left;
+}
+.onSelectMenu ul > li:nth-child(3) span{
+  cursor: pointer;
+}
 .cancel {
   font-size: 25px;
   cursor: pointer;

@@ -1,16 +1,19 @@
-function getDate(time) {
-  const today = new Date();
+import dayjs from "../../package/esm/index.js";
 
+
+
+function getDate(time) {
+  const today = dayjs();
   if (time === "year") {
-    return today.getFullYear().toString().slice(2);
+    return today.format('YY');
   } else if (time === "day") {
-    return today.getDay();
+    return today.format('DD');
   } else if (time === "hour") {
-    return today.getHours();
+    return today.format('hh');
   } else if (time === "minute") {
-    return today.getMinutes();
+    return today.format('MM');
   } else {
-    return today.getSeconds();
+    return today.format('ss');
   }
 }
 

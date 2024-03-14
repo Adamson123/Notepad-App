@@ -62,6 +62,7 @@ body::-webkit-scrollbar {
   padding: 10px 10px 10px 20px;
   position: relative;
   border-left: none;
+  cursor: pointer;
 }
 
 .note::before {
@@ -86,7 +87,6 @@ body::-webkit-scrollbar {
 .textNote {
   height: 47px;
   overflow: hidden;
-  cursor: pointer;
   font-size: 10px;
   margin-top: 10px;
   line-height: 15px;
@@ -111,7 +111,6 @@ body::-webkit-scrollbar {
   display: flex;
   font-size: 12px;
   justify-content: space-between;
-  /* border-bottom: 1px solid var(--sec-color); */
   padding: 10px 0;
   flex-direction: column;
   position: relative;
@@ -138,69 +137,21 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
-.trashAndCheckNoteDiv span {
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.trashAndCheckNoteDiv > span:first-child {
-  font-size: 18px;
-}
-.trashAndCheckNoteDiv > span:first-child:hover {
+.deleteBtn:hover{
   /* color: var(--sec-color); */
   background: var(--sec-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.checkNote {
-  position: relative;
-  isolation: isolate;
-  margin-bottom: 1px;
-  height: 17px;
-  width: 17px;
-}
-.checkNote::before {
-  content: "";
-  background: var(--notes-color);
-  position: absolute;
-  right: 0px;
-  left: 2px;
-  top: 1px;
-  bottom: 0px;
-  border: 2px solid var(--text-color);
-  border-radius: 3px;
-  z-index: -1;
-}
-
-.check {
-  position: absolute;
-  right: 4px;
-  top: 3px;
-  font-weight: bold;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-}
-.checkActive {
-  opacity: 1;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  font-weight: bold;
-  z-index: 2;
-  pointer-events: none;
-}
-.checkNoteBox {
-  pointer-events: all;
-  cursor: pointer;
-  opacity: 0;
+.deleteBtn{
+  font-size: 17px;
 }
 
 .checkNote {
   display: none;
+  font-size: 13px;
 }
+
 .noNotes {
   position: fixed;
   left: 50%;

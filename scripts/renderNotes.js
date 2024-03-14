@@ -19,13 +19,15 @@ import {
   checksAndUnchecksNote,
   countCheckedNotes,
   onSelectMenu,
+  checkAllBox
 } from "./multiselecting.js";
 
-const date = `${getDate("sec")}:${getDate("minute")}:${getDate("year")}`;
+const date = `${getDate("hour")}:${getDate("day")}:${getDate("year")}`;
 const searchBar = document.querySelector(".searchBar-js");
 const searchBarSection = document.querySelector(".searchBarSection-js");
 const searchIcon = document.querySelector(".searchIcon-js");
 export const notesBox = document.querySelector(".notesBox-js");
+
 
 export let notes = [
   {
@@ -84,7 +86,6 @@ export function renderNotes(parameter) {
 
       const { header, note, dateCreated, dateEdited, checked, index } = i;
 
-
       //if there's no header to display we will take from the first word of the note
       let headAlt = header === "" ? note.split(" ")[0] : header;
 
@@ -92,7 +93,7 @@ export function renderNotes(parameter) {
       let headAlt_2 =
         headAlt.length > 35 ? headAlt.slice(0, 27).concat("...") : headAlt;
 
-      let checkClass = checked === false ? "check" : "checkActive";
+      let checkClass = checked === false ? "bi-square" : "bi-check-square";
 
       let newClass;
       if (multiSelecting === false) {
@@ -116,9 +117,9 @@ export function renderNotes(parameter) {
             ${note}
           </div>
           <div class="trashAndCheckNoteDiv">
-            <span class="bi-trash deleteBtn" data-index="${index}"></span>
-            <span class="checkNote ${newClass}"><!--<input type="checkbox" class="checkNoteBox"/>-->
-            <span class="bi-check  ${checkClass}">
+            <span class="bi-trash deleteBtn deleteBtn-js" data-index="${index}"></span>
+            <span class="checkNote ${newClass} ${checkClass}">
+        
             </span>
             </span>
           </div>
@@ -142,18 +143,14 @@ export function renderNotes(parameter) {
     </div>`;
   }
 
-
-
   clickEventOnNotes(multiSelecting);
 
   //for optimization while searching
- if (parameter !== "search") {
-    
+  if (parameter !== "search") {
     clickEventOnNotesDeleteIcons();
     eventlistenerOnMultiselectBtn();
     eventlistenerOndeleteAllBtn();
   }
- 
 }
 
 //filters notes base on search input
@@ -172,7 +169,7 @@ searchIcon.addEventListener("click", () => {
 
 //adding evemtlistener to  all  deleteBtn
 function clickEventOnNotesDeleteIcons() {
-  document.querySelectorAll(".deleteBtn").forEach((i, index) => {
+  document.querySelectorAll(".deleteBtn-js").forEach((i, index) => {
     i.onclick = (event) => {
       event.stopPropagation();
 
@@ -235,18 +232,17 @@ export function deleteAllSelectedNotes() {
     }
   });
 
+  hideElement(checkAllBox, "bi-check-square");
+  showElement(checkAllBox, "bi-square");
+  notes = notChecked;
+  countCheckedNotes();
   //giving delete animation time to play
   setTimeout(() => {
-    notes = notChecked;
-
-    countCheckedNotes();
-
-    // automatically closes parameter menu when there are nothing to delete
+    // automatically closes onSelectMenu menu when there are nothing to delete
     if (notes.length === 0) {
       hideElement(onSelectMenu, "new-active");
       renderNotes(false);
     }
-
     renderNotes("");
   }, 500);
 }
