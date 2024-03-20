@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/bottomNavbar.css" />
     <link rel="stylesheet" href="styles/notepadEditor.css" />
     <link rel="stylesheet" href="styles/active_notActive.css" />
-    <link rel="stylesheet" href="styles/deletedNotes.css">
+    <link rel="stylesheet" href="styles/deletedNotes.css" />
   </head>
   <body>
     <header>
@@ -26,10 +26,10 @@
       <div class="menuBox editMenubox">
         <ul class="show">
           <li class="multiselect">
-            <span class="bi-check-square"></span>Select
+            <span class="bi-check-square"></span> Select
           </li>
-          <li class="customizeTheme">
-            <span class="bi-grid"></span>Customize Theme
+          <li class="searchIcon-js">
+            <span class="bi-search"> Search Note</span>
           </li>
           <li><span class="bi-chat"></span>Feedback</li>
         </ul>
@@ -43,10 +43,13 @@
           <li class="multiselect">
             <span class="bi-check-square"></span>Select
           </li>
-          <li class="customizeTheme">
+          <!-- <li class="customizeTheme">
             <span class="bi-grid"></span>Customize Theme
-          </li>
+          </li> -->
           <li><span class="bi-chat"></span>Feedback</li>
+          <li class="searchIcon-js search">
+            <span class="bi-search"> Search Note</span>
+          </li>
         </ul>
       </div>
 
@@ -58,110 +61,110 @@
           <li class="deleteAll deleteAll-js">Delete</li>
         </ul>
       </div>
-
-      <div class="customizeThemeMenu customizeThemeMenu-js">
-        <div class="customizeThemeMenu_sec">
-          <div class="hideCustomTheme">
-            <span class="bi-x"></span>
-          </div>
-
-          <div class="customizeTheme_secChild">
-            <label for="">Second color</label>
-            <div class="allSecColors"></div>
-          </div>
-
-          <div class="customizeTheme_secChild">
-            <label for="">Background color</label>
-            <input type="color" class="bgColor" />
-          </div>
-          <div class="customizeTheme_secChild">
-            <label for="">Note color</label>
-            <input type="color" class="noteColor" />
-          </div>
-
-          <div class="customizeTheme_secChild">
-            <label for="">Text color</label>
-            <input type="color" class="textColor" />
-          </div>
-        </div>
-      </div>
     </header>
+
+    <div class="actionAlert actionAlert-js">
+      <!-- Moved To Trash -->
+    </div>
 
     <section class="searchBarSection searchBarSection-js">
       <div class="searchBarSectionChild">
-        <input type="text" class="searchBar searchBar-js" placeholder="Enter Text" />
+        <input
+          type="text"
+          class="searchBar searchBar-js"
+          placeholder="Enter Text"
+        />
+        <button class="cancelSearch cancelSearch-js">Cancel</button>
       </div>
     </section>
 
     <main class="mainDiv">
       <!--The div that will display all notes-->
-     
 
       <section class="notesBox notesBox-js"></section>
 
       <!--The div that will display the noteEditor-->
-      <section class="noteEditor">
-        <header class="editorHeader">
-          <div>
-            <span class="bi-x hideEditorBtn-js hideEditorBtn"></span>
-          </div>
-          <div>
-            <span class="bi-pin"></span>
-            <span class="bi-three-dots-vertical"></span>
-          </div>
-        </header>
-
-        <div class="inputHead">
-          <div>
-            <input
-              type="text"
-              class="inputHeadText inputHeadText-js"
-              placeholder="Title..."
-            />
-          </div>
-          <div>
-            <div class="C-Ldate">
-              Created: <span class="created"></span> &nbsp Last Edited:
-              <span class="edited"></span>
-            </div>
-            <span class="bi-calendar"></span>
-          </div>
-        </div>
-
-        <div class="inputNoteDiv">
-          <div class="inputNote inputNote-js" contenteditable="true"></div>
-        </div>
-
-        <div class="editorBottomBar">
-          <div>
-            <span>B</span>
-            <span>U</span>
-            <span><i>I</i></span>
-          </div>
-        </div>
-      </section>
-
-      <section class="deletedNotes">
-
-      </section>
     </main>
 
+    <section class="noteEditor">
+      <header class="editorHeader">
+        <div>
+          <span class="bi-x hideEditorBtn-js hideEditorBtn"></span>
+        </div>
+        <div>
+          <span class="bi-pin"></span>
+          <span class="bi-three-dots-vertical"></span>
+        </div>
+      </header>
+
+      <div class="inputHead">
+        <div>
+          <input
+            type="text"
+            class="inputHeadText inputHeadText-js"
+            placeholder="Title..."
+          />
+        </div>
+        <div>
+          <div class="C-Ldate">
+            Created: <span class="created"></span> &nbsp Last Edited:
+            <span class="edited"></span>
+          </div>
+          <span class="bi-calendar"></span>
+        </div>
+      </div>
+
+      <div class="inputNoteDiv">
+        <div class="inputNote inputNote-js" contenteditable="true"></div>
+      </div>
+
+      <div class="editorBottomBar">
+        <div>
+          <span>B</span>
+          <span>U</span>
+          <span><i>I</i></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="deletedNotesSection deletedNotesSection-js delNotActive">
+      <div class="delNotesHead">
+        <h3>Deleted Notes</h3>
+
+        <div class="delOptions">
+          <div class="restoreAll">
+            Restore All
+          </div>
+          <div class="emptyTrash">
+            Empty
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="noDelNotes">Trash is Empty &nbsp; :(</div>
+      <div class="deletedNotesBox allDelNotes"></div>
+    </section>
+
+
+
+
     <footer class="bottomNavbar">
-      <div>
+      <!-- <div>
         <span class="bi-search-heart-fill searchIcon searchIcon-js"></span>
+      </div> -->
+
+      <div>
+        <span class="bi-book-fill bookIcon bookIcon-js"></span>
       </div>
 
       <button class="addBtn openEditorBtn-js">
         <span class="bi-plus"></span>
-        <span class="back"></span>
+        <!-- <span class="back"></span> -->
       </button>
 
       <div>
-        <span class="bi-book-fill bookIcon"></span>
-      </div>
-
-      <div>
-        <span class="bi-trash-fill trashIcon"></span>
+        <span class="bi-trash-fill trashIcon trashIcon-js"></span>
       </div>
     </footer>
 

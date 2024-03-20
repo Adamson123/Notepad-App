@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  z-index: 3;
+  
   /* border-top: 3px solid var(--sec-color); */
 }
 .searchIcon,
@@ -17,13 +19,14 @@
   font-weight: bold;
   font-size: 18px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .addBtn {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background: var(--sec-color);
+  background: inherit; 
   border: none;
   display: flex;
   justify-content: center;
@@ -33,6 +36,7 @@
   position: relative;
   z-index: 3;
   margin-left: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .addBtn > span:first-child {

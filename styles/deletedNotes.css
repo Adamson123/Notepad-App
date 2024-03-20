@@ -1,9 +1,158 @@
-.deletedNotes{
-    /* position: fixed;
-    background:var(--main-color) ;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    z-index: 2; */
+.deletedNotesSection {
+  position: fixed;
+  background: var(--main-color);
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.delNotActive {
+  display: none;
+}
+.delNotesHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.delNotesHead h3 {
+  font-size: clamp(13px, 2vw, 23px);
+  text-wrap: nowrap;
+  padding-right: 10px;
+}
+.delOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  font-size: clamp(13px, 2vw, 16px);
+}
+
+.emptyTrash {
+  margin-bottom: 1px;
+}
+.emptyTrash,
+.restoreAll {
+  cursor: pointer;
+}
+.emptyTrash:hover,
+.restoreAll:hover {
+  background: var(--sec-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.restoreSvg {
+  width: 15px;
+  margin-bottom: 1px;
+}
+.deletePm {
+  font-size: 25px;
+}
+.chevron {
+  transition: transform 0.4s ease-in;
+}
+.del_ResDiv {
+  display: flex;
+  align-items: center;
+  width: 95px;
+  justify-content: space-between;
+}
+.deletedNotesBox {
+  display: grid;
+  padding: 10px 30px;
+  grid-template-columns: 1fr;
+  width: 90%;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  align-items: center;
+  transform: translateX(7px);
+  margin-top: 30px;
+}
+.deletedNotesBox::-webkit-scrollbar {
+  border-radius: 3px;
+  background: var(--main-color);
+}
+.deletedNotesBox::-webkit-scrollbar-thumb {
+  background: var(--sec-color);
+  border-radius: 3px;
+  border: 6px solid var(--main-color);
+}
+
+.deletedNLabel {
+  display: flex;
+  justify-content: space-between;
+  background: var(--notes-color);
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.deletedNLabel::before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 7px;
+  left: -3px;
+  top: 0;
+  background: var(--sec-color);
+  /* border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; */
+}
+.title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.noteSnip {
+  background: var(--notes-color);
+  font-size: 11px;
+
+  border-radius: 3px;
+  line-height: 15px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  /* position: absolute;
+  z-index: 2; */
+  margin-top: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+.noteSnip::before {
+  content: "";
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+.hideSnip {
+  overflow: hidden;
+  height: 0;
+}
+.deletedNote {
+  position: relative;
+  transition: all 0.4s;
+}
+.noDelNotes {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: rgb(91, 87, 87);
+  text-wrap: nowrap;
+}
+
+
+@media (min-width: 680px) {
+
+  .delOptions {
+    width: 250px;
+  }
+
 }

@@ -16,11 +16,6 @@
   src: url(/Notepad\ App/Fonts/Ubuntu-Regular.ttf);
 }
 
-@font-face {
-  font-family: robotoc;
-  src: url(/Notepad\ App\Fonts\RobotoCondensed-Regular.ttf);
-}
-
 body {
   background: var(--main-color);
   font-family: teko;
@@ -48,7 +43,6 @@ body::-webkit-scrollbar {
   padding: 25px;
   padding-top: 60px;
   transition: transform 0.5s;
- 
 }
 
 .notesBox::-webkit-scrollbar {
@@ -63,6 +57,8 @@ body::-webkit-scrollbar {
   position: relative;
   border-left: none;
   cursor: pointer;
+  /* box-shadow: 0 3px 10px rgb(91, 87, 87 , 0.3); */
+  transition: all 0.3s ease-in-out;
 }
 
 .note::before {
@@ -137,13 +133,13 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
-.deleteBtn:hover{
+.deleteBtn:hover {
   /* color: var(--sec-color); */
   background: var(--sec-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.deleteBtn{
+.deleteBtn {
   font-size: 17px;
 }
 
@@ -172,37 +168,57 @@ body::-webkit-scrollbar {
   z-index: 1;
   display: grid;
   place-content: center;
-  display: none; 
-
+  display: none;
 }
 .searchBar {
   background: var(--main-color);
-  width: 16rem;
+  width: 80%;
   padding: 0 10px;
   height: 30px;
   border: none;
-  border-radius: 3px;
+  border-radius: 3px 0 0 3px;
   position: relative;
   outline: none;
   color: white;
 }
-.searchBar::placeholder{
+.searchBar::placeholder {
   color: white;
 }
-.searchBarSectionChild{
+.searchBarSectionChild {
   padding: 1.2px;
   background: var(--sec-color);
-  display: grid;
-  place-content: center;
+  display: flex;
   border-radius: 4px;
- 
 }
-
+.cancelSearch {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.actionAlert {
+  z-index: 3;
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  padding: 5px 10px;
+  height: 20px;
+  background: var(--notes-color);
+  transform: translateX(-50%);
+  border-radius: 3px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  opacity: 0;
+}
 
 @media (min-width: 625px) {
   .notesBox {
     grid-template-columns: var(--sec-grid);
     padding: 50px;
+    padding-top: 60px;
   }
 
   .editMenubox {
@@ -220,5 +236,8 @@ body::-webkit-scrollbar {
   }
   .hide {
     display: none;
+  }
+  .searchBar {
+    width: 20rem;
   }
 }

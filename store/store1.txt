@@ -166,3 +166,327 @@ export function renderNotes(parameter) {
   searchNote();
 
 }
+
+
+
+//newIndex format 😊
+let  newIndex;
+
+// if(newIndex !== index){
+      //   newIndex = index
+      //  // console.log(newIndex);
+      //   turnIt(index)
+      //   t = 0;
+
+      // }else {
+      //   newIndex++
+      // }
+
+
+
+// T format 😎
+
+let t = 0;
+
+  // if (t < 1) {
+      //   t++;
+      //   turnIt(index);
+      // } else {
+      //   t = 0;
+  // }
+
+
+
+
+
+import getDate from "./utils/date.js";
+import { showElement, hideElement } from "./utils/openAndCloseFunctions.js";
+
+const date = `${getDate("hour")}:${getDate("day")}:${getDate("year")}`;
+
+const deletedNotesArray = [
+  {
+    header: "Food",
+    note: "king kong king okg kog",
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+
+  {
+    header: "Satty",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    `,
+
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+
+  {
+    header: "Sky",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    `,
+
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+  {
+    header: "Lod",
+    note: "king kong king okg kog",
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+
+  {
+    header: "Satty",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    `,
+
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+
+  {
+    header: "Kty",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    `,
+
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+  {
+    header: "Kty",
+    note: `king kong king okg kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    kog king kong king okg kog king kong king okg 
+    kog king kong king okg kog king kong king okg kog
+    `,
+
+    dateDeleted: `${date}`,
+    checked: false,
+  },
+];
+
+let checked = [];
+
+function rotateChevron(index) {
+  const chevron = document.querySelectorAll(".chevron");
+  chevron[index].classList.toggle("chevActive");
+}
+
+function openSnip(index) {
+  const noteSnip = document.querySelectorAll(".noteSnip");
+  noteSnip[index].classList.toggle("hideSnip");
+  noteSnip[index].classList.toggle("noteSnipActive");
+}
+
+function allExpanded(index) {
+  let newCheck = [];
+  if (checked.includes(index)) {
+    checked.forEach((i, int) => {
+      if (i !== index) {
+        newCheck.push(i);
+      }
+    });
+
+    checked = newCheck;
+  } else {
+    checked.push(index);
+    console.log("ppp");
+  }
+
+  console.log(checked);
+}
+
+export function renderDelNotes() {
+  const deletedNote = document.querySelectorAll(".deletedNote");
+  const leftColumnDelNotes = document.querySelector(".leftColumnDelNotes");
+  const rightColumnDelNotes = document.querySelector(".rightColumnDelNotes");
+  const allDelNotes = document.querySelector(".allDelNotes");
+  let leftColumn = "";
+  let rightColumn = "";
+  let allColumns = "";
+  deletedNotesArray.forEach((i, int) => {
+    const { header, note, dateDeleted, checked } = i;
+    if (window.innerWidth < 625) {
+      allColumns += `
+    <div class="deletedNote delNote2">
+    <div for="openNote3" class="deletedNLabel expandNote">
+      <div class="title">
+        <div>${header}</div>
+      </div>
+      <div class="del_ResDiv">
+        <span class="bi-x deletePm"></span>
+
+        <img
+          src="svgs/restore-svgrepo-com (1).svg"
+          class="restoreSvg"
+        />
+        <span class="bi-chevron-up chevron"></span>
+      </div>
+    </div>
+
+    <div class="noteSnip hideSnip">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+      enim, rem accusantium temporibus non minus mollitia illum ad ab
+      molestiae consequatur reiciendis cum eos eum, cumque possimus
+      repellat officiis distinctio?
+    </div>
+  </div>
+    `;
+    } else {
+      if (int % 2 === 0) {
+        leftColumn += `
+      <div class="deletedNote delNote2">
+      <div for="openNote3" class="deletedNLabel expandNote">
+        <div class="title">
+          <div>${header}</div>
+        </div>
+        <div class="del_ResDiv">
+          <span class="bi-x deletePm"></span>
+  
+          <img
+            src="svgs/restore-svgrepo-com (1).svg"
+            class="restoreSvg"
+          />
+          <span class="bi-chevron-up chevron"></span>
+        </div>
+      </div>
+  
+      <div class="noteSnip hideSnip">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+        enim, rem accusantium temporibus non minus mollitia illum ad ab
+        molestiae consequatur reiciendis cum eos eum, cumque possimus
+        repellat officiis distinctio?
+      </div>
+    </div>
+      `;
+      } else {
+        rightColumn += `
+      <div class="deletedNote delNote2">
+      <div for="openNote3" class="deletedNLabel expandNote">
+        <div class="title">
+          <div>${header}</div>
+        </div>
+        <div class="del_ResDiv">
+          <span class="bi-x deletePm"></span>
+  
+          <img
+            src="svgs/restore-svgrepo-com (1).svg"
+            class="restoreSvg"
+          />
+          <span class="bi-chevron-up chevron"></span>
+        </div>
+      </div>
+  
+      <div class="noteSnip hideSnip">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+        enim, rem accusantium temporibus non minus mollitia illum ad ab
+        molestiae consequatur reiciendis cum eos eum, cumque possimus
+        repellat officiis distinctio?
+      </div>
+    </div>
+      `;
+      }
+    }
+  });
+
+  allDelNotes.innerHTML = allColumns;
+  rightColumnDelNotes.innerHTML = rightColumn;
+  leftColumnDelNotes.innerHTML = leftColumn;
+
+  eventlistenerOnNotesLabel();
+  open();
+}
+
+function eventlistenerOnNotesLabel() {
+  const expandNote = document.querySelectorAll(".expandNote");
+  expandNote.forEach((i, index) => {
+    i.addEventListener("click", () => {
+      allExpanded(index);
+      rotateChevron(index);
+      openSnip(index);
+      open();
+    });
+  });
+}
+
+function open() {
+  const noteSnip = document.querySelectorAll(".noteSnip");
+
+  noteSnip.forEach((i, index) => {
+    if (checked.includes(index)) {
+      i.classList.remove("hideSnip");
+      i.classList.add("noteSnipActive");
+      console.log(index);
+      console.log(i);
+    } else {
+      i.classList.add("hideSnip");
+      i.classList.remove("noteSnipActive");
+    }
+  });
+}
+
+window.onresize = () => {
+  renderDelNotes();
+  open();
+};
+
+
+// function staticIndex() {
+//   notes.forEach((i,index) =>{
+//     i['staticindex'] = index
+//   })
+// }
+
+// staticIndex()
+
+
+  <div class="customizeThemeMenu customizeThemeMenu-js">
+        <div class="customizeThemeMenu_sec">
+          <div class="hideCustomTheme">
+            <span class="bi-x"></span>
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Second color</label>
+            <div class="allSecColors"></div>
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Background color</label>
+            <input type="color" class="bgColor" />
+          </div>
+          <div class="customizeTheme_secChild">
+            <label for="">Note color</label>
+            <input type="color" class="noteColor" />
+          </div>
+
+          <div class="customizeTheme_secChild">
+            <label for="">Text color</label>
+            <input type="color" class="textColor" />
+          </div>
+        </div>
+      </div>
+
+
+
+
+      // notes.forEach((i, index) => {
+  //   if (i.checked === true) {
+  //     checked++
+  //   }
+  // });
+
+let checked = 0

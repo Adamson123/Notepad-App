@@ -43,8 +43,8 @@ header {
   list-style: none;
   cursor: pointer;
   padding-left: 10px;
-  font-size: 1rem;
   transition: transform 0.2s ease-out;
+  font-size: clamp(10px, 1vw , 15px);
 }
 
 .menuBox ul li:hover {
@@ -92,6 +92,7 @@ header {
   display: flex;
   align-items: center;
   transition: transform 0.2s ease-out;
+  
 }
 .dropMenu ul li:hover {
   background: var(--sec-color);

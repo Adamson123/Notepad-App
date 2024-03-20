@@ -11,8 +11,7 @@ export const checkAllBox = document.querySelector(".checkAllBox");
 
 //checks and unchecks notes
 export function checksAndUnchecksNote(index) {
-  let notChecked = 0;
-  let checked = 0
+  
   if (notes[index].checked === true) {
     notes[index].checked = false;
   
@@ -20,14 +19,8 @@ export function checksAndUnchecksNote(index) {
     notes[index].checked = true;
   }
 
-  notes.forEach((i, index) => {
-    if (i.checked === true) {
-      checked++
-    }
-  });
-
   //if all the notes in the array are checked, run this and set allChecked to true
-  if (checked === notes.length) {
+  if (notes.every((i) => i.checked === true)) {
     updateCheckAllBox(true)
     hideElement(checkAllBox, "bi-square");
     showElement(checkAllBox, "bi-check-square");
