@@ -21,6 +21,7 @@ import {
   countCheckedNotes,
   onSelectMenu,
   checkAllBox,
+  updateCheckAllBox,
 } from "./multiselecting.js";
 import {
   deletedNotesSection,
@@ -202,6 +203,7 @@ function clickEventOnNotesDeleteIcons() {
       notes.splice(dataIndex, 1);
 
       const noteOnDelete = document.querySelector(`.uniNote${dataIndex}`);
+
       textOnAlert("Moved To Trash");
       showElement(noteOnDelete, "delete");
       setTimeout(() => {
@@ -253,23 +255,28 @@ export function deleteAllSelectedNotes() {
     }
   });
 
-  hideElement(checkAllBox, "bi-check-square");
-  showElement(checkAllBox, "bi-square");
-  deletedNotesArray.push(...checked);
+  if (checked.length > 0) {
+    updateCheckAllBox(false);
+    hideElement(checkAllBox, "bi-check-square");
+    showElement(checkAllBox, "bi-square");
+    deletedNotesArray.push(...checked);
 
-  // console.table(...notChecked);
-  notes = notChecked;
-  countCheckedNotes();
-  textOnAlert("Moved To Trash");
-  //giving delete animation time to play
-  setTimeout(() => {
-    // automatically closes onSelectMenu menu when there are nothing to delete
-    if (notes.length === 0) {
-      hideElement(onSelectMenu, "new-active");
-      renderNotes(false);
-    }
-    renderNotes("");
-  }, 500);
+    // console.table(...notChecked);
+    notes = notChecked;
+    countCheckedNotes();
+
+    textOnAlert("Moved To Trash");
+
+    //giving delete animation time to play
+    setTimeout(() => {
+      // automatically closes onSelectMenu menu when there are nothing to delete
+      if (notes.length === 0) {
+        hideElement(onSelectMenu, "new-active");
+        renderNotes(false);
+      }
+      renderNotes("");
+    }, 500);
+  }
 }
 
 function eventlistenerOndeleteAllBtn() {

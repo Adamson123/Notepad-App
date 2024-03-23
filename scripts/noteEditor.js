@@ -64,3 +64,4 @@ export function eventlistenerOnOpenEditor() {
     updateNoteAndBack(notes.length - 1);
   });
 }
+

@@ -173,16 +173,20 @@ trashIcon.addEventListener("click", () => {
 });
 
 document.querySelector(".restoreAll").addEventListener("click", () => {
-  deletedNotesArray.forEach((i, int) => {
-    notes.splice(i.index, 0, i);
-  });
-  textOnAlert("Note Restored");
-  deletedNotesArray.length = 0;
-  renderDelNotes();
+  if (deletedNotesArray.length > 0) {
+    deletedNotesArray.forEach((i, int) => {
+      notes.splice(i.index, 0, i);
+    });
+    textOnAlert("Note Restored");
+    deletedNotesArray.length = 0;
+    renderDelNotes();
+  }
 });
 
 document.querySelector(".emptyTrash").addEventListener("click", () => {
-  deletedNotesArray.length = 0;
-  textOnAlert('Note Deleted')
-  renderDelNotes();
+  if (deletedNotesArray.length > 0) {
+    deletedNotesArray.length = 0;
+    textOnAlert("Note Deleted");
+    renderDelNotes();
+  }
 });

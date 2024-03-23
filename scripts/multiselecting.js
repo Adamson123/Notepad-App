@@ -11,7 +11,7 @@ export const checkAllBox = document.querySelector(".checkAllBox");
 
 //checks and unchecks notes
 export function checksAndUnchecksNote(index) {
-  
+
   if (notes[index].checked === true) {
     notes[index].checked = false;
   
@@ -42,7 +42,7 @@ function check_uncheckAllNotes(bool) {
   });
 }
 
-function updateCheckAllBox(allNotesChecked) {
+export function updateCheckAllBox(allNotesChecked) {
   checkAllBox.addEventListener("click", () => {
     //if allChecked is false, run this and set it to true;
     if (allNotesChecked === false) {
