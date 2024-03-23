@@ -18,7 +18,7 @@
 
 body {
   background: var(--main-color);
-  font-family: teko;
+  font-family: teko, Arial;
   color: var(--text-color);
   margin: 0;
   padding-top: 10px;
