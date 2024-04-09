@@ -8,7 +8,6 @@
       rel="stylesheet"
       href="bootstrap-icons-1.11.3/font/bootstrap-icons.css"
     />
-
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/notepad.css" />
     <link rel="stylesheet" href="styles/bottomNavbar.css" />
@@ -116,15 +115,58 @@
       </div>
 
       <div class="inputNoteDiv">
+        <div class="absTextFormat">
+          <div>
+            <div class="absTextFormatChild absTextFormatChild-js">
+              <button class="formatText" data-element="bold">B</button>
+              <button class="formatText" data-element="underline">U</button>
+              <button class="formatText" data-element="italic"><i>I</i></button>
+              <button class="formatText" data-element="strikeThrough">S</button>
+
+              <button class="toHeader" data-element="h1">H1</button>
+              <button class="toHeader" data-element="h2">H2</button>
+              <button class="toHeader" data-element="h3">H3</button>
+            </div>
+
+            <button class="bi-chevron-right chevRight chevRight-js"></button>
+            <button class="bi-chevron-left chevLeft chevLeft-js"></button>
+          </div>
+        </div>
+        <button class="bi-plus insertHTML insertHTML-js"></button>
+        <div class="insertHTMLElementMenu insertHTMLElementMenu-js">
+          <div>
+            <button class="insertHTMLElement" data-element="h1">
+              H1 <span>Big Heading</span>
+            </button>
+            <button class="insertHTMLElement" data-element="h1">
+              H2 <span>Medium Heading</span>
+            </button>
+            <button class="insertHTMLElement" data-element="h1">
+              H3 <span>Small Heading</span>
+            </button>
+          </div>
+
+          <div>
+            <button class="insertHTMLElement" data-element="hr">
+              H1 <span>Divider</span>
+            </button>
+            <button>H1 <span>CODE Heading</span></button>
+            <button>H1 <span>Big Heading</span></button>
+            <button>H1 <span>Big Heading</span></button>
+          </div>
+          <div>
+            <button>H1 <span>Big Heading</span></button>
+            <button>H1 <span>Big Heading</span></button>
+            <button>H1 <span>Big Heading</span></button>
+            <button>H1 <span>Big Heading</span></button>
+          </div>
+        </div>
         <div class="inputNote inputNote-js" contenteditable="true"></div>
       </div>
 
       <div class="editorBottomBar">
         <div>
-          <span>B</span>
-          <span>U</span>
-          <span class="toItalic"><i>I</i></span>
-          <span class="toHead">H1</span>
+          <button class="test">test</button>
         </div>
       </div>
     </section>

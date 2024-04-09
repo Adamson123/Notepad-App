@@ -12,13 +12,12 @@
 }
 
 @font-face {
-  font-family: teko;
-  src: url(/Notepad\ App/Fonts/Ubuntu-Regular.ttf);
+  font-family: robotoc;
+  src: url(./../Fonts/RobotoCondensed-Regular.ttf);
 }
-
 body {
   background: var(--main-color);
-  font-family: teko;
+  font-family: robotoc, Arial;
   color: var(--text-color);
   margin: 0;
   padding-top: 10px;

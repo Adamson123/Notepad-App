@@ -1,5 +1,5 @@
 
-import { showElement, hideElement } from "./utils/openAndCloseFunctions.js"
+import { addClass, removeClass } from "./utils/openAndCloseFunctions.js"
 export const dropMenu = document.querySelector(".dropMenu-js");
 const dropMenuIcon = document.querySelector(".dropMenuIcon-js");
 //checks if dropmenu is open or closed
@@ -11,19 +11,19 @@ export function menu(){
 dropMenuIcon.addEventListener("click", (event) => {
     event.stopPropagation();
     if (menuClosed) {
-      showElement(dropMenu, "active");
+      addClass(dropMenu, "active");
   
       document.addEventListener("click", (event) => {
         event.stopPropagation();
   
-        hideElement(dropMenu, "active");
+        removeClass(dropMenu, "active");
   
         menuClosed = true;
       });
   
       menuClosed = false;
     } else {
-      hideElement(dropMenu, "active");
+      removeClass(dropMenu, "active");
       menuClosed = true;
     }
   });
@@ -34,11 +34,11 @@ dropMenuIcon.addEventListener("click", (event) => {
   
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 625) {
-      hideElement(dropMenu, "active");
+      removeClass(dropMenu, "active");
       menuClosed = true;
     } else {
       if (menuClosed === false) {
-        showElement(dropMenu, "active");
+        addClass(dropMenu, "active");
       }
     }
   });

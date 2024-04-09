@@ -21,7 +21,7 @@ header {
 .logo {
   font-weight: bold;
   font-size: 18px;
-  font-family: teko;
+  font-family: robotoc, Arial;
   /* border: 2px solid yellow; */
   display: flex;
 }
@@ -177,28 +177,6 @@ header {
   border: none;
 
 }
- /* .customizeThemeMenu input::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  border-radius: 50%;
-}
-
-
-.customizeThemeMenu div > div:nth-child(3) input::before {
-  background: var(--main-color);
-}
-
-.customizeThemeMenu div > div:nth-child(4) input::before {
-  background: var(--text-color);
-}
-
-.customizeThemeMenu div > div:nth-child(5) input::before {
-  background: var(--notes-color);
-}   */
 .customizeThemeMenu_sec {
   display: grid;
   /* grid-template-columns: 30px 100 1fr 1fr 1fr; */

@@ -1,7 +1,7 @@
 import getDate from "./utils/date.js";
 import {
-  showElement,
-  hideElement,
+  addClass,
+  removeClass,
   toggleElement,
 } from "./utils/openAndCloseFunctions.js";
 import { openEditorBtn } from "./noteEditor.js";
@@ -163,11 +163,11 @@ function eventlistenerOnRestoreSvg() {
 }
 
 trashIcon.addEventListener("click", () => {
-  showElement(bookIcon, "icon-not-active");
-  showElement(trashIcon, "icon-active");
-  showElement(openEditorBtn, "not-active");
-  hideElement(deletedNotesSection, "delNotActive");
-  showElement(deletedNotesSection, "active");
+  addClass(bookIcon, "icon-not-active");
+  addClass(trashIcon, "icon-active");
+  addClass(openEditorBtn, "not-active");
+  removeClass(deletedNotesSection, "delNotActive");
+  addClass(deletedNotesSection, "active");
 
   renderDelNotes();
 });

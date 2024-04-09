@@ -10,8 +10,8 @@ import {
   // dropMenu,
 } from "./noteEditor.js";
 import {
-  showElement,
-  hideElement,
+  addClass,
+  removeClass,
   toggleElement,
 } from "./utils/openAndCloseFunctions.js";
 
@@ -37,7 +37,7 @@ export const notesBox = document.querySelector(".notesBox-js");
 export let notes = [
   {
     header: "Food👍",
-    note: "rem accusantium temporibus non minus mollitia illum ad ab",
+    note: "<h1>remark</h1> accusantium temporibus non minus mollitia illum ad ab",
     dateCreated: `${date}`,
     dateEdited: `${date}`,
     checked: false,
@@ -46,10 +46,36 @@ export let notes = [
   {
     header: "God Abeg🤲",
     note: `
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
-  enim, rem accusantium temporibus non minus mollitia illum ad ab
-     molestiae consequatur reiciendis cum eos eum, cumque possimus
-    repellat officiis distinctio?
+    <h1>Lorem ipsum dolor sit, amet</h1>
+consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non m eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+
+<hr>
+
+<h2>sit, amet consectetur adipisicing</h2>
+elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+
+<hr>
+ 
+<h2>nsectetur adipisicing</h2>
+t consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+
+
+<hr>
+
+ 
+<h2>sit, amet cicing</h2>
+adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusantium temporibus non minus mollitia illum ad ab molestiae consequatur reiciendis cum eos eum, cumque possimus repellat officiis distinctio?
+
+
+
       `,
 
     dateCreated: `${date}`,
@@ -78,10 +104,10 @@ export let notes = [
 export function textOnAlert(text) {
   const actionAlert = document.querySelector(".actionAlert-js");
   actionAlert.innerHTML = text;
-  showElement(actionAlert, "opacityActive");
+  addClass(actionAlert, "opacityActive");
 
   setTimeout(() => {
-    hideElement(actionAlert, "opacityActive");
+    removeClass(actionAlert, "opacityActive");
   }, 1000);
 }
 
@@ -178,12 +204,12 @@ searchBar.addEventListener("keyup", () => {
 //toggles searchBox
 searchNote.forEach((i, index) => {
   i.addEventListener("click", () => {
-    showElement(searchBarSection, "active_sec");
+    addClass(searchBarSection, "active_sec");
   });
 });
 
 document.querySelector(".cancelSearch-js").addEventListener("click", () => {
-  hideElement(searchBarSection, "active_sec");
+  removeClass(searchBarSection, "active_sec");
   searchBar.value = "";
   renderNotes("");
 });
@@ -205,7 +231,7 @@ function clickEventOnNotesDeleteIcons() {
       const noteOnDelete = document.querySelector(`.uniNote${dataIndex}`);
 
       textOnAlert("Moved To Trash");
-      showElement(noteOnDelete, "delete");
+      addClass(noteOnDelete, "delete");
       setTimeout(() => {
         renderNotes();
         countCheckedNotes();
@@ -229,7 +255,7 @@ function clickEventOnNotes(multiSelecting) {
         inputHeadText.value = header;
         created.innerHTML = dateCreated;
         edited.innerHTML = dateEdited;
-        showElement(noteEditor, "editorActive");
+        addClass(noteEditor, "editorActive");
         updateNoteAndBack(dataIndex);
       } else {
         checksAndUnchecksNote(dataIndex);
@@ -251,14 +277,14 @@ export function deleteAllSelectedNotes() {
       checked.push(i);
       //selecting and adding delete animation to the notes we want to delete
       const noteOnDelete = document.querySelector(`.uniNote${index}`);
-      showElement(noteOnDelete, "delete");
+      addClass(noteOnDelete, "delete");
     }
   });
 
   if (checked.length > 0) {
     updateCheckAllBox(false);
-    hideElement(checkAllBox, "bi-check-square");
-    showElement(checkAllBox, "bi-square");
+    removeClass(checkAllBox, "bi-check-square");
+    addClass(checkAllBox, "bi-square");
     deletedNotesArray.push(...checked);
 
     // console.table(...notChecked);
@@ -271,7 +297,7 @@ export function deleteAllSelectedNotes() {
     setTimeout(() => {
       // automatically closes onSelectMenu menu when there are nothing to delete
       if (notes.length === 0) {
-        hideElement(onSelectMenu, "new-active");
+        removeClass(onSelectMenu, "new-active");
         renderNotes(false);
       }
       renderNotes("");
@@ -287,10 +313,10 @@ function eventlistenerOndeleteAllBtn() {
 
 export const bookIcon = document.querySelector(".bookIcon-js");
 bookIcon.addEventListener("click", () => {
-  hideElement(bookIcon, "icon-not-active");
-  hideElement(trashIcon, "icon-active");
-  hideElement(openEditorBtn, "not-active");
-  hideElement(deletedNotesSection, "active");
-  showElement(deletedNotesSection, "delNotActive");
+  removeClass(bookIcon, "icon-not-active");
+  removeClass(trashIcon, "icon-active");
+  removeClass(openEditorBtn, "not-active");
+  removeClass(deletedNotesSection, "active");
+  addClass(deletedNotesSection, "delNotActive");
   renderNotes(" ");
 });

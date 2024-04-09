@@ -1,9 +1,9 @@
-export function showElement(element, active) {
+export function addClass(element, active) {
   element.classList.add(active);
   
 }
 
-export function hideElement(element, active) {
+export function removeClass(element, active) {
   element.classList.remove(active);
   
 }
@@ -14,13 +14,13 @@ export function toggleElement(element, active) {
 
 export function displayMultiElement(element, active) {
   document.querySelectorAll(`.${element}`).forEach((i, index) => {
-    showElement(i, active);
+    addClass(i, active);
   });
 }
 
 export function closeMultiElement(element, active) {
   document.querySelectorAll(`.${element}`).forEach((i, index) => {
-    hideElement(i, active);
+    removeClass(i, active);
   });
 }
 

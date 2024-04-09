@@ -1,7 +1,7 @@
 import { renderNotes, notes } from "./renderNotes.js";
 import {
-  showElement,
-  hideElement,
+  addClass,
+  removeClass,
   closeMultiElement,
 } from "./utils/openAndCloseFunctions.js";
 
@@ -22,13 +22,13 @@ export function checksAndUnchecksNote(index) {
   //if all the notes in the array are checked, run this and set allChecked to true
   if (notes.every((i) => i.checked === true)) {
     updateCheckAllBox(true)
-    hideElement(checkAllBox, "bi-square");
-    showElement(checkAllBox, "bi-check-square");
+    removeClass(checkAllBox, "bi-square");
+    addClass(checkAllBox, "bi-check-square");
   }else{
   //if all the notes in the array are not checked, run this and set allChecked to false
     updateCheckAllBox(false);
-    hideElement(checkAllBox, "bi-check-square");
-    showElement(checkAllBox, "bi-square");
+    removeClass(checkAllBox, "bi-check-square");
+    addClass(checkAllBox, "bi-square");
   }
   
   renderNotes("");
@@ -47,14 +47,14 @@ export function updateCheckAllBox(allNotesChecked) {
     //if allChecked is false, run this and set it to true;
     if (allNotesChecked === false) {
       check_uncheckAllNotes(true);
-      hideElement(checkAllBox, "bi-square");
-      showElement(checkAllBox, "bi-check-square");
+      removeClass(checkAllBox, "bi-square");
+      addClass(checkAllBox, "bi-check-square");
       allNotesChecked = true;
     } else {
      //if allChecked is true, run this and set it to false;
       check_uncheckAllNotes(false);
-      hideElement(checkAllBox, "bi-check-square");
-      showElement(checkAllBox, "bi-square");
+      removeClass(checkAllBox, "bi-check-square");
+      addClass(checkAllBox, "bi-square");
       allNotesChecked = false;
     }
 
@@ -80,7 +80,7 @@ export function countCheckedNotes() {
 
 function multiSelectMode() {
   //making multiselecting menu visible
-  showElement(onSelectMenu, "new-active");
+  addClass(onSelectMenu, "new-active");
   //sets multiSelecting mode to true to make checkbox visibl
   renderNotes(true);
 }
@@ -97,13 +97,13 @@ export function eventlistenerOnMultiselectBtn() {
 //cancel multiselecting and resets all checked notes to unchecked
 document.querySelector(".cancel").addEventListener("click", () => {
   check_uncheckAllNotes(false);
-  hideElement(checkAllBox, "bi-check-square");
-  showElement(checkAllBox, "bi-square");
+  removeClass(checkAllBox, "bi-check-square");
+  addClass(checkAllBox, "bi-square");
   updateCheckAllBox(false);
 
   closeMultiElement("checkNote", "active");
 
   renderNotes(false);
   countCheckedNotes();
-  hideElement(onSelectMenu, "new-active");
+  removeClass(onSelectMenu, "new-active");
 });
