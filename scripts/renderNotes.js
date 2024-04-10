@@ -131,7 +131,7 @@ export function renderNotes(parameter) {
       const { header, note, dateCreated, dateEdited, checked, index } = i;
 
       //if there's no header to display we will take from the first word of the note
-      let headAlt = header === "" ? note.split(" ")[0] : header;
+      let headAlt = header === "" ? note.split(" ")[0].replace(/<h1>/g,'').replace(/<\/h1>/g,'') : header;
 
       //shortens the first word if it's too long to contain the note header
       let headAlt_2 =
