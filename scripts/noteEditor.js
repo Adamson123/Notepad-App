@@ -62,6 +62,8 @@ export function updateNoteAndBack(index) {
     addClass(absTextFormatTool, "not-active");
     addClass(insertHTML, "not-active");
     addClass(insertHTMLElementMenu, "not-active");
+
+    console.table(notes);
   };
 }
 

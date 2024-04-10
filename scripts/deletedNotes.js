@@ -80,7 +80,7 @@ export function renderDelNotes() {
   let allColumns = "";
   if (deletedNotesArray.length >= 0) {
     deletedNotesArray.forEach((i, int) => {
-      const { header, note, dateDeleted, checked } = i;
+      const { header, note, dateDeleted, checked ,newHeader } = i;
 
       i.checked = false;
 
@@ -88,7 +88,7 @@ export function renderDelNotes() {
       <div class="deletedNote delNote2">
       <div for="openNote3" class="deletedNLabel expandNote">
         <div class="title">
-          <div>${header}</div>
+          <div>${newHeader}</div>
         </div>
         <div class="del_ResDiv">
           <span class="bi-x deletePm deletePm" title="delete"></span>

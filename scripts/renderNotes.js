@@ -131,13 +131,20 @@ export function renderNotes(parameter) {
       const { header, note, dateCreated, dateEdited, checked, index } = i;
 
       //if there's no header to display we will take from the first word of the note
-      let headAlt = header === "" ? note.split(" ")[0].replace(/<h1>/g,'').replace(/<\/h1>/g,'') : header;
+
+      const div = document.createElement("div");
+
+      div.innerHTML = note;
+
+      let headAlt = header === "" ? div.innerText.split(" ")[0] : header;
 
       //shortens the first word if it's too long to contain the note header
       let headAlt_2 =
         headAlt.length > 35 ? headAlt.slice(0, 27).concat("...") : headAlt;
 
-      i.header = header === "" ? headAlt_2 : header;
+      // i.header = header === "" ? headAlt_2 : header;
+
+      i["newHeader"] = header === "" ? headAlt_2 : header;
 
       let checkClass = checked === false ? "bi-square" : "bi-check-square";
 
@@ -151,7 +158,7 @@ export function renderNotes(parameter) {
         foundMatch = true;
         html += `
         <div class="note uniNote${num}" data-index="${index}">
-          <div class="noteHead">${i.header}</div>
+          <div class="noteHead">${i.newHeader}</div>
           <div class="dateDiv">
             <div class="date">Created: ${dateCreated}</div>
             <div>Last Edited: ${dateEdited} </div>
