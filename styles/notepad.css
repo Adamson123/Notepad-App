@@ -136,7 +136,9 @@ body::-webkit-scrollbar {
   /* color: var(--sec-color); */
   background: var(--sec-color);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+
 }
 .deleteBtn {
   font-size: 17px;
