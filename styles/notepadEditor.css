@@ -241,7 +241,7 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   height: 40px;
-  font-family: teko, Arial;
+  font-family: teko,Arial;
   font-size: 15px;
   border-radius: 50%;
   cursor: pointer;
