@@ -106,8 +106,33 @@ header {
 }
 .journal {
   margin-left: 3px;
+
+ 
+  animation-name: dancing;
+  animation-duration: 1s;
+  animation-iteration-count:infinite;
+  animation-timing-function: linear;
+  
 }
 
+@keyframes dancing {
+
+  0%{
+    transform: rotateZ(-10deg);
+  }
+  30%{
+    transform: rotateZ(10deg);
+  }
+  50%{
+    transform: rotateZ(-10deg);
+  }
+  70%{
+    transform: rotateZ(10deg);
+  }
+  100%{
+    transform:rotateZ(-10deg) ;
+  }
+}
 .onSelectMenu {
   position: absolute;
   top: 0;

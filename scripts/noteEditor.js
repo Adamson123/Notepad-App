@@ -37,11 +37,7 @@ expandToolsMenu.addEventListener("click", () => {
 
   expandedMenu = expandedMenu === false ? true : false;
 
-  // if (absTextFormatChild.classList.contains('heightChange')) {
-  //   expandedMenu = true;
-  // }else{
-  //   expandedMenu = false
-  // }
+
 });
 
 function changeClass(action) {
@@ -49,6 +45,32 @@ function changeClass(action) {
   action(expandToolsMenu, "positionChange");
   action(inputNote, "inputNoteMarginTop");
 }
+
+//function that determines wether to show expandMenu btn or not 
+export function showExpandEditor() {
+  const menuEnd = document.querySelector(".menuEnd");
+  const bdClient = menuEnd.getBoundingClientRect();
+  const absClient = absTextFormatChild.getBoundingClientRect();
+
+  //show the expandMenu if absTextFormatChild didn't break
+  if (bdClient.bottom > absClient.bottom) {
+    removeClass(expandToolsMenu, "not-active");
+
+    windowExpanded = false; /*set windowExpanded to false if the window collapse to where
+    absTextFormatChild  breaks
+    */
+  } else {
+    // close it if it does
+
+    addClass(expandToolsMenu, "not-active");
+    // changeClass(removeClass)
+
+    windowExpanded = true; /*set windowExpanded to true if the window expands to where
+    absTextFormatChild does not break
+    */
+  }
+}
+
 
 // Function to update the edited note in the array and close the editor
 export function updateNoteAndBack(index) {
@@ -190,31 +212,8 @@ let windowExpanded = false;
 const absTextFormatChildHeight =
   absTextFormatChild.getBoundingClientRect().height;
 
-export function showExpandEditor() {
-  const menuEnd = document.querySelector(".menuEnd");
-  const bdClient = menuEnd.getBoundingClientRect();
-  const absClient = absTextFormatChild.getBoundingClientRect();
 
-  //show the expandMenu if absTextFormatChild didn't break
-  if (bdClient.bottom > absClient.bottom) {
-    removeClass(expandToolsMenu, "not-active");
 
-    windowExpanded = false; /*set windowExpanded to false if the window collapse to where
-    absTextFormatChild  breaks
-    */
-  } else {
-    // close it if it does
-
-    addClass(expandToolsMenu, "not-active");
-    // changeClass(removeClass)
-
-    windowExpanded = true; /*set windowExpanded to true if the window expands to where
-    absTextFormatChild does not break
-    */
-  }
-}
-
-showExpandEditor();
 
 window.addEventListener("resize", () => {
   //remove all class first
@@ -237,8 +236,3 @@ document.querySelectorAll(".editAction").forEach((i) => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  inputNote.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-  });
-});

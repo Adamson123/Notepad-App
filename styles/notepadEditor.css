@@ -123,8 +123,9 @@ body::-webkit-scrollbar {
   padding-right: 15px;
   padding-left: 21px;
   color: rgb(208, 193, 193);
-  user-select: none;
+  margin-top: 15px;
 }
+
 
 .inputNote::-webkit-scrollbar {
   background: transparent;
@@ -298,6 +299,9 @@ table th {
   transition: width 0.2s;
 
 }
+.absTextFormat .headMenuChild button{
+  color: white;
+}
 
 .headMenu:hover .chevHead {
   opacity: 0;
@@ -311,6 +315,7 @@ table th {
 .alignMenu:hover .chevAlign {
   opacity: 0;
 }
+
 
 .chevHead,
 .chevAlign {
@@ -342,13 +347,18 @@ table th {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  right: 10px;
+  right: -14px;
   border: none;
   cursor: pointer;
   top: 60px;
   font-weight: bold;
   background: var(--sec-color);
-  transition: top 0.2s;
+  opacity: 0.6;
+  transition: right 0.2s, top 0.2s;
+}
+.expandToolsMenu:hover{
+  right: 10px;
+  opacity: 1;
 }
 
 .absTextFormatChild .insertLink,
@@ -361,7 +371,7 @@ table th {
 .absTextFormatChild .insertLink2::before {
   content: "/";
   position: absolute;
-  font-weight: normal;
+  
 }
 
 .centerText {
