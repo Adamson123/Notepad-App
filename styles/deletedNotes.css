@@ -20,7 +20,7 @@
   width: 90%;
 }
 .delNotesHead h3 {
-  font-size: clamp(13px, 2vw, 23px);
+  font-size: clamp(17px, 2vw, 23px);
   text-wrap: nowrap;
   padding-right: 10px;
 }
@@ -127,7 +127,7 @@
   left: 0;
   bottom: 0;
   top: 0;
-  box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 -5px 5px rgba(0, 0, 0, 0.2);
   position: absolute;
 }
 .hideSnip {
@@ -148,11 +148,8 @@
   text-wrap: nowrap;
 }
 
-
 @media (min-width: 680px) {
-
   .delOptions {
     width: 250px;
   }
-
 }

@@ -61,8 +61,15 @@
 .opacityActive{
   opacity: 1;
 }
-
-
+.heightChange{
+  height: auto;
+}
+.positionChange{
+  top: 110px;
+}
+.inputNoteMarginTop{
+  margin-top: 60px;
+}
 
 @keyframes decrease {
   0% {

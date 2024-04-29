@@ -1,3 +1,8 @@
+@font-face {
+  font-family: teko;
+  src: url(/Fonts/static/Teko-Regular.ttf);
+}
+
 .noteEditor {
   position: fixed;
   z-index: 999999;
@@ -9,6 +14,7 @@
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+  flex-direction: column;
 }
 
 .noteEditor::-webkit-scrollbar {
@@ -33,7 +39,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  padding: 15px 20px;
+  padding: 0 20px;
   background: var(--main-color);
   color: var(--text-color);
   z-index: 999999;
@@ -55,13 +61,13 @@ body::-webkit-scrollbar {
   position: fixed;
   right: 0;
   left: 0;
-  top: 35px;
+  top: 20px;
   background: var(--main-color);
   z-index: 99999;
 }
 
 .inputHead > div:first-child {
-  height: 30px;
+  height: 25px;
   margin-bottom: 15px;
 }
 
@@ -71,7 +77,7 @@ body::-webkit-scrollbar {
   width: 100%;
   font-size: 12px;
   color: var(--text-color);
-  border-bottom: 1px solid var(--text-color);
+  /* border-bottom: 1px solid var(--text-color); */
   padding-bottom: 25px;
   padding-left: 2px;
   font-weight: bold;
@@ -99,39 +105,50 @@ body::-webkit-scrollbar {
   height: 100%;
 }
 
+/*FIXME*/
 .inputNote {
-  margin-top: 0;
-  width: calc(100% - 70px);
+  /*width: calc(100% - 70px);*/
+  width: 100%;
   outline: none;
   font-size: 13px;
   background: var(--main-color);
   border: none;
   color: var(--text-color);
-  min-height: 100%;
+  height: 100%;
   transform: translateX(-3px);
   word-break: break-all;
   overflow: auto;
-  padding-bottom: 50px;
+  padding-bottom: 150px;
   position: relative;
-  padding-right: 10px;
+  padding-right: 15px;
+  padding-left: 21px;
   color: rgb(208, 193, 193);
+  user-select: none;
 }
 
 .inputNote::-webkit-scrollbar {
   background: transparent;
   cursor: pointer;
-  width: 3px;
+  width: 7px;
 }
 
 .inputNote::-webkit-scrollbar-thumb {
   background: var(--sec-color);
   cursor: pointer;
+  border-radius: 5px;
 }
 .inputNote hr {
   outline: none;
   border: none;
   height: 2px;
   background: var(--sec-color);
+}
+
+.inputNote h1 {
+  font-size: 1.5rem;
+}
+.inputNote a {
+  cursor: pointer;
 }
 .keyboardBtn {
   position: fixed;
@@ -150,7 +167,7 @@ body::-webkit-scrollbar {
 }
 
 .editorBottomBar {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -160,27 +177,13 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 .editorBottomBar div {
   display: flex;
   justify-content: space-between;
   width: 300px;
-}
-
-.editorBottomBar div button {
-  width: 40px;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  border-radius: 50%;
-  border: none;
 }
 
 table td,
@@ -190,50 +193,25 @@ table th {
   height: 30px;
 }
 
+/*FIXME*/
 .absTextFormat {
-  position: absolute;
+  position: fixed;
   background: var(--sec-color);
   z-index: 99999;
-  border-radius: 3px;
-  height: 40px;
-  padding: 5px 30px 0 30px;
+  top: 130px;
   display: flex;
-}
-
-.chevRight {
-  color: black;
-  font-weight: bold;
-  background: transparent;
-  border: none;
-  position: absolute;
-  top: -2px;
-  right: -27px;
-  width: 25px;
-  height: 100%;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-.chevLeft {
-  color: black;
-  font-weight: bold;
-  background: transparent;
-  border: none;
-  position: absolute;
-  top: -2px;
-  left: -27px;
-  width: 25px;
-  height: 100%;
-  cursor: pointer;
-  font-size: 17px;
+  width: 100%;
+  justify-content: center;
+  padding-left: 5px;
 }
 
 .absTextFormat > div {
   position: relative;
+  width: 100%;
+  padding: 5px 0 5px 0;
 }
 
-.absTextFormat div .absTextFormatChild {
-  width: 250px;
+.absTextFormatChild {
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -241,128 +219,154 @@ table th {
   overflow-y: hidden;
   scroll-behavior: smooth;
   border-radius: 5px;
+  width: 100%;
+  gap: 5px;
+  flex-wrap: wrap;
+  height: 45px;
+  overflow: hidden;
+  transition: height 0.2s;
 }
 
-.absTextFormat div .absTextFormatChild::-webkit-scrollbar {
+.absTextFormatChild::-webkit-scrollbar {
   background: transparent;
   display: none;
   height: 0;
 }
 
-.absTextFormat div .absTextFormatChild::-webkit-scrollbar-thumb {
+.absTextFormatChild::-webkit-scrollbar-thumb {
   background: transparent;
   position: relative;
   border-bottom: 6px solid rgb(217, 28, 217);
 }
 
-.absTextFormat div .absTextFormatChild button {
-  width: 35px;
-  background: rgba(0, 0, 0, 0.3);
+.absTextFormatChild button {
+  width: 40px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35px;
-  padding: 18px;
-  font-weight: bold;
+  height: 40px;
+  font-family: teko;
+  font-size: 15px;
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  margin-right: 10px;
+  position: relative;
+}
+.absTextFormatChild button img {
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.absTextFormat div .absTextFormatChild > button:nth-child(2) {
-  text-decoration: underline;
+.absTextFormatChild button:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.absTextFormat div .absTextFormatChild > button:nth-child(3) {
+.absTextFormatChild .italic {
   font-family: serif;
 }
-.absTextFormat div .absTextFormatChild > button:nth-child(4) {
+.absTextFormatChild .linethrough {
   text-decoration: line-through;
 }
-
-.insertHTML {
-  position: absolute;
-  left: 0;
-  font-size: 23px;
-  cursor: pointer;
-  transition: transform 0.1s linear;
-  background: transparent;
-  color: white;
-  text-align: left;
-  width: 30px;
-  border: none;
-  outline: none;
+.absTextFormatChild .undo {
+  transform: rotateY(-180deg);
+  position: initial;
 }
 
-.insertHTML:hover {
-  transform: scale(1.2);
-}
 
-.insertHTMLElementMenu {
-  height: 170px;
-  width: 150px;
-  position: absolute;
-  background: var(--sec-color);
-  z-index: 1;
-  border-radius: 5px;
-  overflow-y: auto;
+/*FIXME*/
+.headMenu,
+.alignMenu {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding-top: 10px;
-}
-
-.insertHTMLElementMenu::-webkit-scrollbar {
-  width: 5px;
-}
-.insertHTMLElementMenu::-webkit-scrollbar-thumb {
-  background: rgb(253, 244, 244, 0.8);
-  border-radius: 4px;
-}
-.insertHTMLElementMenu div {
-  display: flex;
-  flex-direction: column;
-  width: 93%;
-  align-items: center;
-  margin-bottom: 20px;
   position: relative;
-  padding-bottom: 10px;
 }
 
-.insertHTMLElementMenu div:not(:last-child):before {
-  content: "";
-  width: 90%;
-  background: var(--main-color);
-  height: 2px;
-  top: 100%;
-  position: absolute;
+.alignList{
+  margin-top: 3px;
 }
-.insertHTMLElementMenu button {
-  width: 90%;
-  font-size: 13px;
-  background: transparent;
-  margin-bottom: 7px;
-  color: white;
-  opacity: 1;
-  border-radius: 2px;
-  transition: background 0.2s ease-in-out;
-  font-weight: bolder;
-  cursor: pointer;
+.absTextFormat .headMenuChild,
+.absTextFormat .alignMenuChild {
+  overflow: hidden;
+  width: 0;
   display: flex;
-  border: none;
+  align-items: center;
+  transition: width 0.2s;
+
 }
-.insertHTMLElementMenu button:hover {
-  background: rgb(255, 255, 255, 0.7);
+
+.headMenu:hover .chevHead {
+  opacity: 0;
+}
+
+.headMenu:hover .headMenuChild,
+.alignMenu:hover .alignMenuChild {
+  width: 120px;
+}
+
+.alignMenu:hover .chevAlign {
+  opacity: 0;
+}
+
+.chevHead,
+.chevAlign {
+  transform: rotateZ(180deg);
+  position: absolute;
+  top: 16px;
+  font-weight: bold;
+  left: 27px;
+  transition: opacity 0.3s;
+  font-size: 7px;
   color: black;
 }
-.insertHTMLElementMenu button:hover > span {
-  color: var(--main-color);
+.chevAlign {
+  top: 15px;
 }
-.insertHTMLElementMenu span {
-  font-size: 11px;
-  margin-left: 12px;
+
+.absTextFormat .numLImg {
+  width: 18px;
+}
+.chevDown {
+  transform: rotateZ(-90deg);
+  transition: all 0.3s;
+}
+.expandToolsMenu {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  right: 10px;
+  border: none;
+  cursor: pointer;
+  top: 60px;
   font-weight: bold;
-  color: rgb(236, 236, 236);
-  text-wrap: nowrap;
+  background: var(--sec-color);
+  transition: top 0.2s;
+}
+
+.absTextFormatChild .insertLink,
+.absTextFormat .insertLink2 {
+  font-weight: bolder;
+  font-size: 13px;
+  transform: rotateZ(-50deg);
+  position: relative;
+}
+.absTextFormatChild .insertLink2::before {
+  content: "/";
+  position: absolute;
+  font-weight: normal;
+}
+
+.centerText {
+  text-align: center;
+}
+.textAlignLeft {
+  text-align: left;
 }

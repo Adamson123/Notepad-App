@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/active_notActive.css" />
     <link rel="stylesheet" href="styles/deletedNotes.css" />
   </head>
+
   <body>
     <header>
       <div class="logoBox">
@@ -113,62 +114,96 @@
           <span class="bi-calendar"></span>
         </div>
       </div>
-
-      <div class="inputNoteDiv">
-        <div class="absTextFormat">
-          <div>
-            <div class="absTextFormatChild absTextFormatChild-js">
-              <button class="formatText" data-element="bold">B</button>
-              <button class="formatText" data-element="underline">U</button>
-              <button class="formatText" data-element="italic"><i>I</i></button>
-              <button class="formatText" data-element="strikeThrough">S</button>
-
-              <button class="toHeader" data-element="h1">H1</button>
-              <button class="toHeader" data-element="h2">H2</button>
-              <button class="toHeader" data-element="h3">H3</button>
+      <div class="absTextFormat" contenteditable="false">
+        <div>
+          <div class="absTextFormatChild absTextFormatChild-js">
+            <div class="headMenu">
+              <button class="headers_key">
+                <img src="svgs/text-size-solid-svgrepo-com.svg" class="hdMenuImg" />
+              </button>
+              <span class="bi-chevron-left chevHead"></span>
+              <div class="headMenuChild">
+                <button class="toHeader" data-element="h1">H1</button>
+                <button class="toHeader" data-element="h2">H2</button>
+                <button class="toHeader" data-element="h3">H3</button>
+              </div>
             </div>
 
-            <button class="bi-chevron-right chevRight chevRight-js"></button>
-            <button class="bi-chevron-left chevLeft chevLeft-js"></button>
-          </div>
-        </div>
-        <button class="bi-plus insertHTML insertHTML-js"></button>
-        <div class="insertHTMLElementMenu insertHTMLElementMenu-js">
-          <div>
-            <button class="insertHTMLElement" data-element="h1">
-              H1 <span>Big Heading</span>
-            </button>
-            <button class="insertHTMLElement" data-element="h1">
-              H2 <span>Medium Heading</span>
-            </button>
-            <button class="insertHTMLElement" data-element="h1">
-              H3 <span>Small Heading</span>
-            </button>
-          </div>
+            <div class="alignMenu">
+              <button>
+               <span class="bi-list alignList"></span>
+              </button>
 
-          <div>
-            <button class="insertHTMLElement" data-element="hr">
-              H1 <span>Divider</span>
+              <span class="bi-chevron-left chevAlign"></span>
+              <div class="alignMenuChild">
+                <!-- FIXME -->
+                <button class="alignContent" data-element="justifyLeft">
+                  <img
+                    src="svgs/format_align_left_FILL0_wght400_GRAD0_opsz24.svg"
+                  />
+                </button>
+                <button  class="alignContent" data-element="justifyCenter">
+                  <img
+                    src="svgs/format_align_center_FILL0_wght400_GRAD0_opsz24.svg"
+                  />
+                </button>
+                <button  class="alignContent" data-element="justifyRight">
+                  <img
+                    src="svgs/format_align_right_FILL0_wght400_GRAD0_opsz24.svg"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <button class="formatText" data-element="bold">B</button>
+            <button class="formatText" data-element="underline">
+              <u>U</u>
             </button>
-            <button>H1 <span>CODE Heading</span></button>
-            <button>H1 <span>Big Heading</span></button>
-            <button>H1 <span>Big Heading</span></button>
-          </div>
-          <div>
-            <button>H1 <span>Big Heading</span></button>
-            <button>H1 <span>Big Heading</span></button>
-            <button>H1 <span>Big Heading</span></button>
-            <button>H1 <span>Big Heading</span></button>
+            <button class="formatText italic" data-element="italic">
+              <i>I</i>
+            </button>
+            <button class="formatText linethrough" data-element="strikethrough">
+              S
+            </button>
+
+            <!-- <div class="hdMenu"></div> -->
+
+            <button class="editAction" data-element="undo">
+              <img src="svgs/redo-arrow-svgrepo-com.svg" class="undo" />
+            </button>
+            <button class="editAction" data-element="redo">
+              <img src="svgs/redo-arrow-svgrepo-com.svg" class="redo" />
+            </button>
+            <button class="insertLink"><span class="bi-link"></span></button>
+            <button class="insertLink2"><span class="bi-link"></span></button>
+
+            <button class="list" data-element="insertunorderedlist">
+              <img src="svgs/bullet-list-svgrepo-com (1).svg" />
+            </button>
+
+            <button class="list" data-element="insertorderedlist">
+              <img src="svgs/number-list-svgrepo-com.svg" class="numLImg" />
+            </button>
+
+            
+            <button class="menuEnd divider">
+              <img src="svgs/divider-svgrepo-com.svg" alt="">
+            </button>
           </div>
         </div>
+        <button class="expandToolsMenu">
+          <span class="bi-chevron-left chevDown"></span>
+        </button>
+      </div>
+      <div class="inputNoteDiv">
         <div class="inputNote inputNote-js" contenteditable="true"></div>
       </div>
 
-      <div class="editorBottomBar">
+      <!-- <div class="editorBottomBar">
         <div>
           <button class="test">test</button>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <section class="deletedNotesSection deletedNotesSection-js delNotActive">

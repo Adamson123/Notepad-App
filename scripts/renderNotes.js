@@ -7,6 +7,7 @@ import {
   noteEditor,
   updateNoteAndBack,
   openEditorBtn,
+  showExpandEditor
   // dropMenu,
 } from "./noteEditor.js";
 import {
@@ -85,7 +86,8 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit enim, rem accusa
 
   {
     header: "404",
-    note: "Page Not found🧐",
+    note: `lolllll<div class="grizz">Page Not found🧐</div>looollll`,
+
     dateCreated: `${date}`,
     dateEdited: `${date}`,
     checked: false,
@@ -183,6 +185,7 @@ export function renderNotes(parameter) {
     </div>`;
     } else {
       notesBox.innerHTML = html;
+    
     }
   }
   //if there are no notes display this 👇
@@ -243,6 +246,8 @@ function clickEventOnNotesDeleteIcons() {
         renderNotes();
         countCheckedNotes();
       }, 500);
+
+
     };
   });
 }
@@ -264,9 +269,11 @@ function clickEventOnNotes(multiSelecting) {
         edited.innerHTML = dateEdited;
         addClass(noteEditor, "editorActive");
         updateNoteAndBack(dataIndex);
+        showExpandEditor()
       } else {
         checksAndUnchecksNote(dataIndex);
       }
+
     };
   });
 }
@@ -327,3 +334,5 @@ bookIcon.addEventListener("click", () => {
   addClass(deletedNotesSection, "delNotActive");
   renderNotes(" ");
 });
+
+

@@ -23,4 +23,3 @@ export function closeMultiElement(element, active) {
     removeClass(i, active);
   });
 }
-

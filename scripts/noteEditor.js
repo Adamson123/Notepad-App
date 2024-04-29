@@ -16,21 +16,40 @@ export const inputHeadText = document.querySelector(".inputHeadText-js");
 export const created = document.querySelector(".created");
 export const edited = document.querySelector(".edited");
 const absTextFormatChild = document.querySelector(".absTextFormatChild");
-const chevRight = document.querySelector(".chevRight-js");
-const chevLeft = document.querySelector(".chevLeft-js");
 const absTextFormatTool = document.querySelector(".absTextFormat");
-const insertHTML = document.querySelector(".insertHTML-js");
 
 const toHeader = document.querySelectorAll(".toHeader");
-const insertHTMLElement = document.querySelectorAll(".insertHTMLElement");
 const formatText = document.querySelectorAll(".formatText");
-const insertHTMLElementMenu = document.querySelector(
-  ".insertHTMLElementMenu-js"
-);
 
-addClass(absTextFormatTool, "not-active");
-addClass(insertHTML, "not-active");
-addClass(insertHTMLElementMenu, "not-active");
+const expandToolsMenu = document.querySelector(".expandToolsMenu");
+const chevDown = document.querySelector(".chevDown");
+let expandedMenu = false;
+
+let chevDir = -90;
+
+expandToolsMenu.addEventListener("click", () => {
+  toggleElement(absTextFormatChild, "heightChange");
+  toggleElement(expandToolsMenu, "positionChange");
+  toggleElement(inputNote, "inputNoteMarginTop");
+
+  chevDir = chevDir === -90 ? 90 : -90;
+  chevDown.style.transform = `rotateZ(${chevDir}deg)`;
+
+  expandedMenu = expandedMenu === false ? true : false;
+
+  // if (absTextFormatChild.classList.contains('heightChange')) {
+  //   expandedMenu = true;
+  // }else{
+  //   expandedMenu = false
+  // }
+});
+
+function changeClass(action) {
+  action(absTextFormatChild, "heightChange");
+  action(expandToolsMenu, "positionChange");
+  action(inputNote, "inputNoteMarginTop");
+}
+
 // Function to update the edited note in the array and close the editor
 export function updateNoteAndBack(index) {
   hideEditorBtn.onclick = () => {
@@ -50,7 +69,7 @@ export function updateNoteAndBack(index) {
     notes[index].header = inputHeadText.value;
     notes[index].note = inputNote.innerHTML;
 
-    if (notes[index].note === "" && notes[index].header === "") {
+    if (notes[index].note.trim() === "" && notes[index].header.trim() === "") {
       notes.splice(index, 1);
     }
 
@@ -59,11 +78,11 @@ export function updateNoteAndBack(index) {
     inputHeadText.value = "";
     inputNote.innerHTML = "";
 
-    addClass(absTextFormatTool, "not-active");
-    addClass(insertHTML, "not-active");
-    addClass(insertHTMLElementMenu, "not-active");
+    changeClass(removeClass);
 
-    console.table(notes);
+    expandedMenu = false;
+    chevDir =-90
+    chevDown.style.transform = `rotateZ(${chevDir}deg)`;
   };
 }
 
@@ -88,169 +107,138 @@ export function eventlistenerOnOpenEditor() {
 
     //tells the upadateAndBack function to update the latest note added
     updateNoteAndBack(notes.length - 1);
+    showExpandEditor();
   });
 }
 
-let adjustTool = false;
 toHeader.forEach((i) => {
   i.addEventListener("click", () => {
-    adjustTool = true;
     const htmlElement = i.dataset.element;
     styleText(htmlElement);
-    adjustTextFormatTool();
+    //adjustTextFormatTool();
   });
 });
 
-formatText.forEach((i) => {
+formatText.forEach((i, index) => {
   i.addEventListener("click", () => {
-    const htmlElement = i.dataset.element;
-    document.execCommand(htmlElement);
+    const element = i.dataset.element
+    
+
+    document.execCommand(element);
+    //adjustTextFormatTool();
   });
 });
 
-function getCursor() {
-  const selection = window.getSelection();
+document.querySelector(".insertLink").addEventListener("click", () => {
+  const promptVal = prompt("Enter Link");
+  const selectedText = window.getSelection().toString();
+  const a = document.createElement("a");
+  a.href = promptVal;
 
-  if (selection.rangeCount > 0) {
-    const range = selection.getRangeAt(0);
-    const span = document.createElement("span");
+  const linkText = `<a href="${promptVal}" target="_blank
+  ">${selectedText}</a>`;
 
-    range.insertNode(span);
+  document.execCommand("insertHTML", false, linkText);
 
-    const rect = span.getBoundingClientRect();
+  linkFunc();
+});
 
-    insertHTML.style.top = rect.top - 6 + "px";
-    if (rect.bottom + 200 >= window.innerHeight) {
-      insertHTMLElementMenu.style.top = rect.bottom - 195 + "px";
-    } else {
-      insertHTMLElementMenu.style.top = rect.bottom + 5 + "px";
-    }
+document.querySelector(".insertLink2").addEventListener("click", () => {
+  document.execCommand("unlink", false, null);
 
-    insertHTMLElementMenu.style.left = rect.left + "px";
+  linkFunc();
+});
 
-    span.parentNode.removeChild(span);
+document.querySelectorAll(".list").forEach(i =>{
+  i.addEventListener("click", () => {
+    const element = i.dataset.element
+
+    console.log(element);
+    document.execCommand(element);
+  });
+})
+
+document.querySelectorAll(".alignContent").forEach(i =>{
+  i.addEventListener("click", () => {
+    const element = i.dataset.element
+
+    console.log(element);
+    document.execCommand(element);
+  });
+})
+
+document.querySelector('.divider').addEventListener('click',() =>{
+  document.execCommand('insertHTML',false,'<hr>')
+})
+
+
+
+function linkFunc() {
+  document.querySelectorAll("a").forEach((a, index) => {
+    a.onclick = () => {
+      window.open(a.href);
+    };
+
+    a.onselectionchange = () => {
+      const pr = window.prompt(`Enter new Link`, a.href);
+      a.href = pr;
+    };
+  });
+}
+
+let windowExpanded = false;
+const absTextFormatChildHeight =
+  absTextFormatChild.getBoundingClientRect().height;
+
+export function showExpandEditor() {
+  const menuEnd = document.querySelector(".menuEnd");
+  const bdClient = menuEnd.getBoundingClientRect();
+  const absClient = absTextFormatChild.getBoundingClientRect();
+
+  //show the expandMenu if absTextFormatChild didn't break
+  if (bdClient.bottom > absClient.bottom) {
+    removeClass(expandToolsMenu, "not-active");
+
+    windowExpanded = false; /*set windowExpanded to false if the window collapse to where
+    absTextFormatChild  breaks
+    */
+  } else {
+    // close it if it does
+
+    addClass(expandToolsMenu, "not-active");
+    // changeClass(removeClass)
+
+    windowExpanded = true; /*set windowExpanded to true if the window expands to where
+    absTextFormatChild does not break
+    */
   }
 }
-function getCursorYPosition() {
-  const selection = window.getSelection();
 
-  // Check if there is a selection
-  if (selection.rangeCount > 0) {
-    const r = selection.getRangeAt(0);
-
-    if (
-      r.startContainer.textContent === "" &&
-      r.endContainer.textContent === ""
-    ) {
-      removeClass(insertHTML, "not-active");
-      getCursor();
-    } else {
-      addClass(insertHTML, "not-active");
-      addClass(insertHTMLElementMenu, "not-active");
-    }
-  }
-}
-
-function adjustTextFormatTool() {
-  const selection = window.getSelection();
-
-  if (inputNote === document.activeElement || adjustTool === true) {
-    const range = selection.getRangeAt(0);
-
-    if (selection.toString().length > 0) {
-      //absTextFormatTool.style.display = "flex";
-      removeClass(absTextFormatTool, "not-active");
-      const rect = range.getBoundingClientRect();
-      absTextFormatTool.style.marginTop = 0 + "px";
-      const windowWidth = window.innerWidth;
-
-      let leftPosition = rect.left;
-      let topPosition = rect.bottom;
-
-      if (leftPosition + 350 > windowWidth) {
-        leftPosition = windowWidth - 350;
-      }
-
-      absTextFormatTool.style.left = leftPosition + "px";
-      absTextFormatTool.style.top = topPosition + "px";
-    } else {
-      addClass(absTextFormatTool, "not-active");
-    }
-
-    getCursorYPosition();
-  }
-  adjustTool = false;
-}
+showExpandEditor();
 
 window.addEventListener("resize", () => {
-  if (inputNote === document.activeElement) {
-    adjustTextFormatTool();
-  } else {
-    getCursor();
+  //remove all class first
+  changeClass(removeClass);
+
+  //run function to see whether expandMenu to be opened
+  showExpandEditor();
+
+  //retrieve the menu state if it's opened before the window is expanded to width where
+  // the absTextFormatChild does not break
+  if (expandedMenu && !windowExpanded) {
+    changeClass(addClass);
   }
 });
 
-insertHTML.addEventListener("click", () => {
-  inputNote.focus();
-
-  toggleElement(insertHTMLElementMenu, "not-active");
-
-  getCursor();
-  inputNote.blur();
-});
-
-inputNote.addEventListener("scroll", () => {
-  if (inputNote === document.activeElement) {
-    adjustTextFormatTool();
-  } else {
-    getCursor();
-  }
-});
-
-["click", "mouseup", "keyup", "selectionchange", "input"].forEach((i) => {
-  inputNote.addEventListener(i, () => {
-    adjustTextFormatTool();
-
-    addClass(insertHTMLElementMenu, "not-active");
-  });
-});
-
-chevRight.addEventListener("click", () => {
-  absTextFormatChild.scrollLeft += 50;
-});
-
-chevLeft.addEventListener("click", () => {
-  absTextFormatChild.scrollLeft -= 50;
-});
-
-function insertHTMLTag(tag) {
-  const selection = window.getSelection();
-  const range = selection.getRangeAt(0);
-
-  const h3 = document.createElement(tag);
-  h3.innerHTML = "&nbsp;";
-
-  range.insertNode(h3);
-
-  const newRange = document.createRange();
-  newRange.selectNodeContents(h3);
-  newRange.collapse(false);
-  selection.removeAllRanges();
-  selection.addRange(newRange);
- 
-  
-}
-
-insertHTMLElement.forEach((i) => {
+document.querySelectorAll(".editAction").forEach((i) => {
   i.addEventListener("click", () => {
-    adjustTool = true;
-    const htmlElement = i.dataset.element;
-    insertHTMLTag(htmlElement);
-    adjustTextFormatTool();
+    const action = i.dataset.element;
+    document.execCommand(action);
   });
 });
 
-document.querySelector(".test").addEventListener("click", () => {
-  
- 
+document.addEventListener("DOMContentLoaded", () => {
+  inputNote.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
 });
