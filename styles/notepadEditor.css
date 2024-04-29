@@ -187,12 +187,6 @@ body::-webkit-scrollbar {
   width: 300px;
 }
 
-table td,
-table th {
-  border: 2px solid red;
-  width: 100px;
-  height: 30px;
-}
 
 /*FIXME*/
 .absTextFormat {
@@ -247,7 +241,7 @@ table th {
   align-items: center;
   justify-content: center;
   height: 40px;
-  font-family: teko;
+  font-family: teko,Arial;
   font-size: 15px;
   border-radius: 50%;
   cursor: pointer;
