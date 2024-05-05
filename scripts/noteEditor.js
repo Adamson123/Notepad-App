@@ -142,7 +142,7 @@ formatText.forEach((i, index) => {
   i.addEventListener("click", () => {
     const element = i.dataset.element;
 
-    i.classList.toggle("toolIsActive");
+    //i.classList.toggle("toolIsActive");
     document.execCommand(element);
 
     //adjustTextFormatTool();
