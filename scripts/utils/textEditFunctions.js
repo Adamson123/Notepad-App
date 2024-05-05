@@ -3,7 +3,7 @@ import { inputNote } from "../noteEditor.js";
 
 
 
-function getTag() {
+export function getTag() {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);

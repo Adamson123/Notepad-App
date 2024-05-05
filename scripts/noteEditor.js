@@ -5,7 +5,7 @@ import {
 } from "./utils/openAndCloseFunctions.js";
 import getDate from "./utils/date.js";
 import { notes, renderNotes } from "./renderNotes.js";
-import { styleText } from "./utils/textEditFunctions.js";
+import { styleText, getTag } from "./utils/textEditFunctions.js";
 
 // Selecting elements from the DOM
 export const openEditorBtn = document.querySelector(".openEditorBtn-js");
@@ -142,7 +142,9 @@ formatText.forEach((i, index) => {
   i.addEventListener("click", () => {
     const element = i.dataset.element;
 
+    i.classList.toggle("toolIsActive");
     document.execCommand(element);
+
     //adjustTextFormatTool();
   });
 });
@@ -167,14 +169,77 @@ document.querySelector(".insertLink2").addEventListener("click", () => {
   linkFunc();
 });
 
+let elementCentered = false;
+
+inputNote.addEventListener(
+  "click",
+  (event) => {
+    const fElement = event.target;
+    if (window.getComputedStyle(fElement).textAlign === "center") {
+      elementCentered = true;
+      console.log("centered");
+    } else {
+      false;
+      console.log("not centered");
+    }
+  },
+  true
+);
+
 document.querySelectorAll(".list").forEach((i) => {
   i.addEventListener("click", () => {
     const element = i.dataset.element;
 
-    console.log(element);
     document.execCommand(element);
+
+    listCenterFix("center");
+    listCenterFix("right");
+    listCenterFix("left");
   });
 });
+
+function listCenterFix(align) {
+  let ul = inputNote.querySelectorAll("ul");
+  let ol = inputNote.querySelectorAll("ol");
+
+  ul.forEach((u) => {
+    const span = u.querySelectorAll("span");
+    span.forEach((s) => {
+      if (s.style.textAlign === align) {
+        u.style.textAlign = align;
+      }
+    });
+  });
+
+  ol = inputNote.querySelectorAll("ol");
+  ol.forEach((o) => {
+    const span = o.querySelectorAll("span");
+    span.forEach((s) => {
+      if (s.style.textAlign === align) {
+        o.style.textAlign = align;
+      }
+    });
+  });
+
+  const inputNoteDivs = document.querySelectorAll("div");
+
+  inputNoteDivs.forEach((d) => {
+    const span = d.querySelectorAll("span");
+    const li = d.querySelectorAll("li");
+    const ad = d.querySelectorAll("div");
+    span.forEach((s) => {
+      if (s.style.textAlign === align && ad.length === 0) {
+        d.style.textAlign = align;
+      }
+    });
+
+    li.forEach((l) => {
+      if (l.style.textAlign === align && ad.length === 0) {
+        d.style.textAlign = align;
+      }
+    });
+  });
+}
 
 document.querySelectorAll(".alignContent").forEach((i) => {
   i.addEventListener("click", () => {
@@ -182,18 +247,27 @@ document.querySelectorAll(".alignContent").forEach((i) => {
 
     document.execCommand(element, false, null);
 
-    const selection = window.getSelection();
+    // const selection = window.getSelection();
 
-    const range = selection.getRangeAt(0);
-    const selectedContent = range.cloneContents();
-    const tags = selectedContent.querySelectorAll("*");
-    if (tags.length === 0) {
-      const span = document.createElement("span");
-      range.surroundContents(span);
-    }
+    // const range = selection.getRangeAt(0);
+    // const selectedContent = range.cloneContents();
+    // const tags = selectedContent.querySelectorAll("*");
+    // if (tags.length === 0) {
+    //   const span = document.createElement("span");
+    //   range.surroundContents(span);
+    // }
 
-    const commonAncestor = range.commonAncestorContainer;
-    commonAncestor.style.listStylePosition = listposition;
+    // const commonAncestor = range.commonAncestorContainer;
+    //commonAncestor.style.listStylePosition = listposition;
+
+    // commonAncestor.querySelectorAll('li').forEach(li =>{
+    //   li.style.textAlign = 'inherit'
+    //  // li.style.listStylePosition = 'inside'
+    // })
+    // commonAncestor.querySelectorAll('ul').forEach(ul =>{
+    //   ul.style.textAlign = 'center'
+    //   ul.style.listStylePosition = 'inside'
+    // })
   });
 });
 

@@ -374,3 +374,11 @@ body::-webkit-scrollbar {
 .textAlignLeft {
   text-align: left;
 }
+
+
+.inputNote ul, .inputNote ol{
+  list-style-position: inside;
+}
+.absTextFormatChild .toolIsActive{
+  background: rgba(0, 0, 0, 0.3);
+}
