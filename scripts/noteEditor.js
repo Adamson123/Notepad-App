@@ -36,8 +36,6 @@ expandToolsMenu.addEventListener("click", () => {
   chevDown.style.transform = `rotateZ(${chevDir}deg)`;
 
   expandedMenu = expandedMenu === false ? true : false;
-
-
 });
 
 function changeClass(action) {
@@ -46,7 +44,7 @@ function changeClass(action) {
   action(inputNote, "inputNoteMarginTop");
 }
 
-//function that determines wether to show expandMenu btn or not 
+//function that determines wether to show expandMenu btn or not
 export function showExpandEditor() {
   const menuEnd = document.querySelector(".menuEnd");
   const bdClient = menuEnd.getBoundingClientRect();
@@ -70,7 +68,6 @@ export function showExpandEditor() {
     */
   }
 }
-
 
 // Function to update the edited note in the array and close the editor
 export function updateNoteAndBack(index) {
@@ -103,7 +100,7 @@ export function updateNoteAndBack(index) {
     changeClass(removeClass);
 
     expandedMenu = false;
-    chevDir =-90
+    chevDir = -90;
     chevDown.style.transform = `rotateZ(${chevDir}deg)`;
   };
 }
@@ -143,8 +140,7 @@ toHeader.forEach((i) => {
 
 formatText.forEach((i, index) => {
   i.addEventListener("click", () => {
-    const element = i.dataset.element
-    
+    const element = i.dataset.element;
 
     document.execCommand(element);
     //adjustTextFormatTool();
@@ -171,29 +167,39 @@ document.querySelector(".insertLink2").addEventListener("click", () => {
   linkFunc();
 });
 
-document.querySelectorAll(".list").forEach(i =>{
+document.querySelectorAll(".list").forEach((i) => {
   i.addEventListener("click", () => {
-    const element = i.dataset.element
+    const element = i.dataset.element;
 
     console.log(element);
     document.execCommand(element);
   });
-})
+});
 
-document.querySelectorAll(".alignContent").forEach(i =>{
+document.querySelectorAll(".alignContent").forEach((i) => {
   i.addEventListener("click", () => {
-    const element = i.dataset.element
+    const { element, listposition } = i.dataset;
 
-    console.log(element);
-    document.execCommand(element);
+    document.execCommand(element, false, null);
+
+    const selection = window.getSelection();
+
+    const range = selection.getRangeAt(0);
+    const selectedContent = range.cloneContents();
+    const tags = selectedContent.querySelectorAll("*");
+    if (tags.length === 0) {
+      const span = document.createElement("span");
+      range.surroundContents(span);
+    }
+
+    const commonAncestor = range.commonAncestorContainer;
+    commonAncestor.style.listStylePosition = listposition;
   });
-})
+});
 
-document.querySelector('.divider').addEventListener('click',() =>{
-  document.execCommand('insertHTML',false,'<hr>')
-})
-
-
+document.querySelector(".divider").addEventListener("click", () => {
+  document.execCommand("insertHTML", false, "<hr>");
+});
 
 function linkFunc() {
   document.querySelectorAll("a").forEach((a, index) => {
@@ -211,9 +217,6 @@ function linkFunc() {
 let windowExpanded = false;
 const absTextFormatChildHeight =
   absTextFormatChild.getBoundingClientRect().height;
-
-
-
 
 window.addEventListener("resize", () => {
   //remove all class first
@@ -235,4 +238,3 @@ document.querySelectorAll(".editAction").forEach((i) => {
     document.execCommand(action);
   });
 });
-
