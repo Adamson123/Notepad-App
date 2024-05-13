@@ -243,6 +243,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
   border: none;
   position: relative;
+  outline: none;
 }
 .absTextFormatChild button img {
   width: 12px;
@@ -280,7 +281,12 @@ body::-webkit-scrollbar {
   background: rgba(255, 255, 255, 0.3);
 }
 .align-key{
-  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.align-key .bi-list{
+  margin-top: 3.5px;
 }
 .absTextFormat .headMenuChild,
 .absTextFormat .alignMenuChild {
@@ -301,7 +307,7 @@ body::-webkit-scrollbar {
 
 .headMenu:hover .headMenuChild,
 .alignMenu:hover .alignMenuChild {
-  width: 120px;
+  width: 130px;
 }
 
 .alignMenu:hover .chevAlign {
@@ -346,11 +352,13 @@ body::-webkit-scrollbar {
   font-weight: bold;
   background: var(--sec-color);
   opacity: 0.6;
-  transition: right 0.2s, top 0.2s;
+  /* transition: right 0.2s, top 0.2s; */
+  transition:  right 3s ,opacity 3s;
 }
 .expandToolsMenu:hover{
   right: 10px;
   opacity: 1;
+  transition: right 0.3s;
 }
 
 .absTextFormatChild .insertLink,

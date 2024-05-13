@@ -153,13 +153,21 @@ formatText.forEach((i, index) => {
 
     //i.classList.toggle("toolIsActive");
     document.execCommand(element);
-    document.execCommand("insertText", false, " ");
+    const selection = window.getSelection();
+    const range  = selection.getRangeAt(0);
+    const stringText = range.toString()
+    if (!stringText.length) {
+       document.execCommand("insertText", false, " ");
+    }
+
+  
 
     inputNote.focus();
 
     i.classList.toggle("toolIsActive");
 
     markToolBeenUsed();
+
 
    
   });
