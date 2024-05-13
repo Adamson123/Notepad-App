@@ -9,7 +9,7 @@ function getDate(time) {
   } else if (time === "day") {
     return today.format('DD');
   } else if (time === "hour") {
-    return today.format('hh');
+    return today.format('h') + today.format('a');
   } else if (time === "minute") {
     return today.format('MM');
   } else {

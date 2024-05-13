@@ -87,7 +87,7 @@
       <!--The div that will display the noteEditor-->
     </main>
 
-    <section class="noteEditor">
+    <section class="noteEditor editorNotActive">
       <header class="editorHeader">
         <div>
           <span class="bi-x hideEditorBtn-js hideEditorBtn"></span>
@@ -133,8 +133,8 @@
             </div>
 
             <div class="alignMenu">
-              <button>
-                <span class="bi-list alignList"></span>
+              <button class="align-key">
+                <span class="bi-list"></span>
               </button>
 
               <span class="bi-chevron-left chevAlign"></span>
@@ -170,15 +170,14 @@
                 </button>
               </div>
             </div>
-
-            <button class="formatText" data-element="bold">B</button>
-            <button class="formatText" data-element="underline">
+            <button class="formatText bold" data-element="bold" data-tag="b">B</button>
+            <button class="formatText" data-element="underline" data-tag="u">
               <u>U</u>
             </button>
-            <button class="formatText italic" data-element="italic">
+            <button class="formatText italic" data-element="italic" data-tag="i">
               <i>I</i>
             </button>
-            <button class="formatText linethrough" data-element="strikethrough">
+            <button class="formatText linethrough" data-element="strikethrough" data-tag="strike">
               S
             </button>
 
@@ -193,11 +192,11 @@
             <button class="insertLink"><span class="bi-link"></span></button>
             <button class="insertLink2"><span class="bi-link"></span></button>
 
-            <button class="list" data-element="insertunorderedlist">
+            <button class="list" data-element="insertunorderedlist" data-tag="ul">
               <img src="svgs/bullet-list-svgrepo-com (1).svg" />
             </button>
 
-            <button class="list" data-element="insertorderedlist">
+            <button class="list" data-element="insertorderedlist" data-tag="ol">
               <img src="svgs/number-list-svgrepo-com.svg" class="numLImg" />
             </button>
 

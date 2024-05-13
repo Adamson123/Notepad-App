@@ -24,6 +24,8 @@ export function getTag() {
     }
 
     return OutterTags;
+  }else{
+    return []
   }
 }
 

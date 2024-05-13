@@ -1,13 +1,13 @@
 .active {
   display: initial;
 }
-.active_sec{
+.active_sec {
   display: grid;
 }
-.icon-active{
+.icon-active {
   color: var(--main-color);
 }
-.icon-not-active{
+.icon-not-active {
   color: white;
 }
 .not-active {
@@ -16,9 +16,8 @@
 
 .new-active {
   transform: translateX(0);
-  
 }
-.editorActive{
+.editorActive {
   top: 0;
   bottom: 0;
   right: 0;
@@ -26,9 +25,35 @@
   transform: translateX(0);
   padding-top: 170px;
   padding-bottom: 120px;
-  opacity: 1;
+  /* opacity: 1; */
   pointer-events: auto;
+  transition: transform 0.5s;
+ 
 }
+
+.editorNotActive {
+  transition: transform 0.5s ;
+  transform: translateX(200%);
+  overflow: hidden;
+
+  top: 0; 
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0;
+  pointer-events: none;
+
+
+  /* opacity: 0;  */
+   /* width: 0;
+  height: 0;  */
+  /* margin: 0;
+  padding: 0;  */
+  /* height: 0;
+  width: 0; */
+}
+
+
 
 .new-not-active {
   transform: translateX(100%);
@@ -38,36 +63,33 @@
   animation-delay: 0;
 }
 
-
-.noteBox-active{
+.noteBox-active {
   transform: translateY(200px);
-  
 }
-.customizeThemeActive{
+.customizeThemeActive {
   transform: translateY(0);
 }
-.chevActive{
+.chevActive {
   transform: rotateZ(-180deg);
 }
-.noteSnipActive{
+.noteSnipActive {
   padding: 10px 10px 15px 10px;
   height: 75px;
   margin-bottom: 10px;
 }
-.delNoteActive{
+.delNoteActive {
   height: 70px;
-
 }
-.opacityActive{
+.opacityActive {
   opacity: 1;
 }
-.heightChange{
+.heightChange {
   height: auto;
 }
-.positionChange{
+.positionChange {
   top: 110px;
 }
-.inputNoteMarginTop{
+.inputNoteMarginTop {
   margin-top: 60px;
 }
 

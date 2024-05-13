@@ -7,7 +7,7 @@ import {
   noteEditor,
   updateNoteAndBack,
   openEditorBtn,
-  showExpandEditor
+  showExpandEditor,
   // dropMenu,
 } from "./noteEditor.js";
 import {
@@ -185,7 +185,6 @@ export function renderNotes(parameter) {
     </div>`;
     } else {
       notesBox.innerHTML = html;
-    
     }
   }
   //if there are no notes display this 👇
@@ -246,8 +245,6 @@ function clickEventOnNotesDeleteIcons() {
         renderNotes();
         countCheckedNotes();
       }, 500);
-
-
     };
   });
 }
@@ -267,13 +264,13 @@ function clickEventOnNotes(multiSelecting) {
         inputHeadText.value = header;
         created.innerHTML = dateCreated;
         edited.innerHTML = dateEdited;
+        removeClass(noteEditor, "editorNotActive");
         addClass(noteEditor, "editorActive");
         updateNoteAndBack(dataIndex);
-        showExpandEditor()
+        showExpandEditor();
       } else {
         checksAndUnchecksNote(dataIndex);
       }
-
     };
   });
 }
@@ -334,5 +331,3 @@ bookIcon.addEventListener("click", () => {
   addClass(deletedNotesSection, "delNotActive");
   renderNotes(" ");
 });
-
-
