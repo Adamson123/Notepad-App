@@ -4,7 +4,7 @@ import {
     toggleElement,
 } from "./utils/openAndCloseFunctions.js";
 import getDate from "./utils/date.js";
-import { notes, renderNotes } from "./renderNotes.js";
+import { notes, renderNotes, updateNotesInStorage } from "./renderNotes.js";
 import { styleText, getTag } from "./utils/textEditFunctions.js";
 import { listCenterFix } from "./utils/otherUtills.js";
 import { markToolBeenUsed } from "./utils/otherUtills.js";
@@ -113,6 +113,7 @@ export function updateNoteAndBack(index) {
         expandedMenu = false;
         chevDir = -90;
         chevDown.style.transform = `rotateZ(${chevDir}deg)`;
+        updateNotesInStorage();
     };
 }
 
@@ -139,6 +140,7 @@ export function eventlistenerOnOpenEditor() {
         //tells the upadateAndBack function to update the latest note added
         updateNoteAndBack(notes.length - 1);
         showExpandEditor();
+        updateNotesInStorage();
     });
 }
 

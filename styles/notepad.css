@@ -1,246 +1,245 @@
-
 :root {
-  --main-color: #151414;
-  /* --sec-color: rgb(241, 108, 108);  */
-  --sec-color: linear-gradient(90deg, #50e6f1 0%, #a6a6de 50%, #ed91d0 100%);
-  --text-color: white;
-  --notes-color: #2a2828;
-  --notes-text-color: #5e5a5a;
-  --date-color: #c1b9b9;
-  --navbar-border: #dbffff4d;
-  --grid: 50% 50%;
-  --sec-grid: 25% 25% 25% 25%;
+    --main-color: #151414;
+    /* --sec-color: rgb(241, 108, 108);  */
+    --sec-color: linear-gradient(90deg, #50e6f1 0%, #a6a6de 50%, #ed91d0 100%);
+    --text-color: white;
+    --notes-color: #2a2828;
+    --notes-text-color: #5e5a5a;
+    --date-color: #c1b9b9;
+    --navbar-border: #dbffff4d;
+    --grid: 50% 50%;
+    --sec-grid: 25% 25% 25% 25%;
 }
 
 @font-face {
-  font-family: robotoc;
-  src: url(./../Fonts/RobotoCondensed-Regular.ttf);
+    font-family: robotoc;
+    src: url(./../Fonts/RobotoCondensed-Regular.ttf);
 }
 body {
-  background: var(--main-color);
-  font-family: robotoc, Arial;
-  color: var(--text-color);
-  margin: 0;
-  padding-top: 10px;
-  padding-bottom: 100px;
-  min-height: 100vh;
-  overflow-x: hidden;
+    background: var(--main-color);
+    font-family: robotoc, Arial;
+    color: var(--text-color);
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .notesBox {
-  display: grid;
-  grid-template-columns: var(--grid);
-  column-gap: 15px;
-  row-gap: 15px;
-  align-content: center;
-  justify-content: center;
-  margin-top: 30px;
-  height: 100%;
-  overflow: auto;
-  padding: 25px;
-  padding-top: 60px;
-  transition: transform 0.5s;
+    display: grid;
+    grid-template-columns: var(--grid);
+    column-gap: 15px;
+    row-gap: 15px;
+    align-content: center;
+    justify-content: center;
+    margin-top: 30px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 25px;
+    padding-top: 60px;
+    transition: transform 0.5s;
 }
 
 .notesBox::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 .note {
-  height: auto;
-  box-sizing: border-box;
-  border-radius: 5px;
-  background: var(--notes-color);
-  padding: 10px 10px 10px 20px;
-  position: relative;
-  border-left: none;
-  cursor: pointer;
-  /* box-shadow: 0 3px 10px rgb(91, 87, 87 , 0.3); */
-  transition: all 0.3s ease-in-out;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: var(--notes-color);
+    padding: 10px 10px 10px 20px;
+    position: relative;
+    border-left: none;
+    cursor: pointer;
+    /* box-shadow: 0 3px 10px rgb(91, 87, 87 , 0.3); */
+    transition: all 0.3s ease-in-out;
 }
 
 .note::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  background: var(--sec-color);
-  top: -0.2px;
-  bottom: -0.2px;
-  left: -3px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+    content: "";
+    position: absolute;
+    width: 10px;
+    background: var(--sec-color);
+    top: -0.2px;
+    bottom: -0.2px;
+    left: -3px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .noteHead {
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: left;
-  font-size: 13px;
-  font-family: robotoc, Arial;
-  color: var(--text-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 13px;
+    font-family: robotoc, Arial;
+    color: var(--text-color);
 }
 .textNote {
-  height: 47px;
-  overflow: hidden;
-  font-size: 10px;
-  margin-top: 10px;
-  line-height: 15px;
-  color: var(--text-color);
-  position: relative;
-  word-wrap: break-word;
+    height: 47px;
+    overflow: hidden;
+    font-size: 10px;
+    margin-top: 10px;
+    line-height: 15px;
+    color: var(--text-color);
+    position: relative;
+    word-wrap: break-word;
 }
 .textNote::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  bottom: -2px;
-  background: linear-gradient(to bottom, transparent, var(--notes-color));
-  height: 150%;
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    background: linear-gradient(to bottom, transparent, var(--notes-color));
+    height: 150%;
 }
 .textNote::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 .dateDiv {
-  display: flex;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 10px 0;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    padding: 10px 0;
+    flex-direction: column;
+    position: relative;
 }
 .dateDiv::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 1px;
-  background: var(--sec-color);
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--sec-color);
 }
 .dateDiv div {
-  color: var(--date-color);
-  font-weight: bold;
-  font-size: 8px;
+    color: var(--date-color);
+    font-weight: bold;
+    font-size: 8px;
 }
 .trashAndCheckNoteDiv {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 17px;
-  position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+    position: relative;
 }
 
 .deleteBtn:hover {
-  /* color: var(--sec-color); */
-  background: var(--sec-color);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
+    /* color: var(--sec-color); */
+    background: var(--sec-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .deleteBtn {
-  font-size: 17px;
+    font-size: 17px;
 }
 
 .checkNote {
-  display: none;
-  font-size: 13px;
+    display: none;
+    font-size: 13px;
 }
 
 .noNotes {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2em;
-  color: rgb(91, 87, 87);
-  text-wrap: nowrap;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: rgb(91, 87, 87);
+    text-wrap: nowrap;
 }
 
 .searchBarSection {
-  background-color: var(--main-color);
-  position: fixed;
-  top: 50px;
-  right: 0;
-  left: 0;
-  height: 50px;
-  z-index: 1;
-  display: grid;
-  place-content: center;
-  display: none;
+    background-color: var(--main-color);
+    position: fixed;
+    top: 50px;
+    right: 0;
+    left: 0;
+    height: 50px;
+    z-index: 1;
+    display: grid;
+    place-content: center;
+    display: none;
 }
 .searchBar {
-  background: var(--main-color);
-  width: 80%;
-  padding: 0 10px;
-  height: 30px;
-  border: none;
-  border-radius: 3px 0 0 3px;
-  position: relative;
-  outline: none;
-  color: white;
+    background: var(--main-color);
+    width: 80%;
+    padding: 0 10px;
+    height: 30px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+    position: relative;
+    outline: none;
+    color: white;
 }
 .searchBar::placeholder {
-  color: white;
+    color: white;
 }
 .searchBarSectionChild {
-  padding: 1.2px;
-  background: var(--sec-color);
-  display: flex;
-  border-radius: 4px;
+    padding: 1.2px;
+    background: var(--sec-color);
+    display: flex;
+    border-radius: 4px;
 }
 .cancelSearch {
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 .actionAlert {
-  z-index: 3;
-  position: fixed;
-  left: 50%;
-  top: 10px;
-  padding: 5px 10px;
-  height: 20px;
-  background: var(--notes-color);
-  transform: translateX(-50%);
-  border-radius: 3px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  transition: opacity 0.5s;
-  pointer-events: none;
-  opacity: 0;
+    z-index: 3;
+    position: fixed;
+    left: 50%;
+    top: 10px;
+    padding: 5px 10px;
+    height: 20px;
+    background: var(--notes-color);
+    transform: translateX(-50%);
+    border-radius: 3px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    opacity: 0;
 }
 
 @media (min-width: 625px) {
-  .notesBox {
-    grid-template-columns: var(--sec-grid);
-    padding: 50px;
-    padding-top: 60px;
-  }
+    .notesBox {
+        grid-template-columns: var(--sec-grid);
+        padding: 50px;
+        padding-top: 60px;
+    }
 
-  .editMenubox {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  .show {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 500px;
-  }
-  .hide {
-    display: none;
-  }
-  .searchBar {
-    width: 20rem;
-  }
+    .editMenubox {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .show {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 500px;
+    }
+    .hide {
+        display: none;
+    }
+    .searchBar {
+        width: 20rem;
+    }
 }

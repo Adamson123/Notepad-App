@@ -5,14 +5,27 @@ import {
     toggleElement,
 } from "./utils/openAndCloseFunctions.js";
 import { openEditorBtn } from "./noteEditor.js";
-import { bookIcon, notes, textOnAlert } from "./renderNotes.js";
+import {
+    bookIcon,
+    notes,
+    textOnAlert,
+    updateNotesInStorage,
+} from "./renderNotes.js";
 export const trashIcon = document.querySelector(".trashIcon-js");
 export const deletedNotesSection = document.querySelector(
     ".deletedNotesSection-js"
 );
 const date = `${getDate("hour")}:${getDate("day")}:${getDate("year")}`;
 
-export let deletedNotesArray = [];
+export let deletedNotesArray =
+    JSON.parse(localStorage.getItem("deletedNotesArray")) || [];
+
+export const updateDelNotesInStorage = () => {
+    localStorage.setItem(
+        "deletedNotesArray",
+        JSON.stringify(deletedNotesArray)
+    );
+};
 
 function rotateChevron(index) {
     const chevron = document.querySelectorAll(".chevron");
@@ -90,6 +103,7 @@ function eventlistenerOnDeletePm() {
 
             textOnAlert("Deleted Permanently");
 
+            updateDelNotesInStorage();
             renderDelNotes();
         });
     });
@@ -112,6 +126,8 @@ function eventlistenerOnRestoreSvg() {
             deletedNotesArray.splice(int, 1);
             textOnAlert("Note Restored");
 
+            updateNotesInStorage();
+            updateDelNotesInStorage();
             renderDelNotes();
         });
     });
@@ -134,6 +150,8 @@ document.querySelector(".restoreAll").addEventListener("click", () => {
         });
         textOnAlert("Note Restored");
         deletedNotesArray.length = 0;
+        updateDelNotesInStorage();
+        updateNotesInStorage();
         renderDelNotes();
     }
 });
@@ -141,6 +159,7 @@ document.querySelector(".restoreAll").addEventListener("click", () => {
 document.querySelector(".emptyTrash").addEventListener("click", () => {
     if (deletedNotesArray.length > 0) {
         deletedNotesArray.length = 0;
+        updateDelNotesInStorage();
         textOnAlert("Note Deleted");
         renderDelNotes();
     }
