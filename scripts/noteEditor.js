@@ -118,8 +118,26 @@ export function updateNoteAndBack(index) {
         updateNotesInStorage();
         window.onbeforeunload = () => {};
     }
+
     hideEditorBtn.onclick = () => updatefunc();
-    window.onbeforeunload = () => updatefunc();
+
+    const isMobileDevice =
+        /Mobi|Android|iPhone|iPod|BlackBerry|IEMobile|Opere Mini/i.test(
+            navigator.userAgent
+        );
+
+    if (isMobileDevice) {
+        window.onbeforeunload = (event) => {
+            if (
+                notes[index].header !== inputHeadText.value ||
+                notes[index].note !== inputNote.innerHTML
+            ) {
+                event.preventDefault();
+            }
+        };
+    } else {
+        window.onbeforeunload = () => updatefunc();
+    }
 }
 
 // Event listener for opening editor and adding a new note
