@@ -4,7 +4,7 @@ XPAD is a practice project notepad application designed to enhance your note-tak
 
 ### Motivation:
 
-XPAD is a practice project aimed at honing my web development skills. My objective is to develop a versatile notepad application that showcases my proficiency in both front-end and back-end development.
+XPAD is a practice project aimed at honing my web development skills. My objective is to develop a versatile notepad application that showcases my proficiency in both front-end development.
 
 ### Features:
 

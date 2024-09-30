@@ -50,7 +50,7 @@ function changeClass(action) {
 }
 
 //function that determines wether to show expandMenu btn or not
-export function showExpandEditor() {
+export function showExpandEditorTools() {
     const menuEnd = document.querySelector(".menuEnd");
     const bdClient = menuEnd.getBoundingClientRect();
     const absClient = absTextFormatChild.getBoundingClientRect();
@@ -64,7 +64,6 @@ export function showExpandEditor() {
     */
     } else {
         // close it if it does
-
         addClass(expandToolsMenu, "not-active");
         // changeClass(removeClass)
 
@@ -75,18 +74,21 @@ export function showExpandEditor() {
 }
 
 // Function to update the edited note in the array and close the editor
-export function updateNoteAndBack(index) {
-    hideEditorBtn.onclick = () => {
-        removeClass(noteEditor, "editorActive");
 
+export function updateNoteAndBack(index) {
+    function updatefunc() {
+        removeClass(noteEditor, "editorActive");
         // addClass(noteEditor, 'noteAnimation')
         addClass(noteEditor, "editorNotActive");
 
+        const { note, header, dateEdited } = notes[index] || {
+            note: "",
+            header: "",
+            dateEdited: "",
+        };
+
         //update the edit date only of the note or head are different from the value
         // of the note and head of the html element
-
-        const { note, header, dateEdited } = notes[index];
-
         if (note !== inputNote.innerHTML || header !== inputHeadText.value) {
             notes[index].dateEdited = `${getDate("hour")}:${getDate(
                 "day"
@@ -114,7 +116,10 @@ export function updateNoteAndBack(index) {
         chevDir = -90;
         chevDown.style.transform = `rotateZ(${chevDir}deg)`;
         updateNotesInStorage();
-    };
+        window.onbeforeunload = () => {};
+    }
+    hideEditorBtn.onclick = () => updatefunc();
+    window.onbeforeunload = () => updatefunc();
 }
 
 // Event listener for opening editor and adding a new note
@@ -139,7 +144,7 @@ export function eventlistenerOnOpenEditor() {
 
         //tells the upadateAndBack function to update the latest note added
         updateNoteAndBack(notes.length - 1);
-        showExpandEditor();
+        showExpandEditorTools();
         updateNotesInStorage();
     });
 }
@@ -155,9 +160,9 @@ toHeader.forEach((i) => {
 formatText.forEach((i, index) => {
     i.addEventListener("click", () => {
         const element = i.dataset.element;
-
         //i.classList.toggle("toolIsActive");
         document.execCommand(element);
+
         const selection = window.getSelection();
         const range = selection.getRangeAt(0);
         const stringText = range.toString();
@@ -183,7 +188,6 @@ insertLinkBtn.addEventListener("click", () => {
   ">${selectedText}</a>`;
 
         document.execCommand("insertHTML", false, linkText);
-
         linkFunc();
         markToolBeenUsed();
     }
@@ -191,11 +195,8 @@ insertLinkBtn.addEventListener("click", () => {
 
 document.querySelector(".insertLink2").addEventListener("click", () => {
     document.execCommand("unlink", false, null);
-
     linkFunc();
 });
-
-let elementCentered = false;
 
 const allInputNoteEvents = [
     "click",
@@ -251,7 +252,6 @@ markToolBeenUsed();
 lists.forEach((i) => {
     i.addEventListener("click", () => {
         const element = i.dataset.element;
-
         document.execCommand(element);
 
         listCenterFix("center");
@@ -265,11 +265,9 @@ lists.forEach((i) => {
 document.querySelectorAll(".alignContent").forEach((i, int) => {
     i.addEventListener("click", (event) => {
         const { element, listposition } = i.dataset;
-
         document.execCommand(element, false, null);
         inputNote.focus();
         alignContent[int].classList.add("toolIsActive");
-
         removeClassFromOthers(int);
     });
 });
@@ -300,7 +298,7 @@ window.addEventListener("resize", () => {
     changeClass(removeClass);
 
     //run function to see whether expandMenu to be opened
-    showExpandEditor();
+    showExpandEditorTools();
 
     //retrieve the menu state if it's opened before the window is expanded to width where
     // the absTextFormatChild does not break

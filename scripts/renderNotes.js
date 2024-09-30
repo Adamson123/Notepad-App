@@ -7,7 +7,7 @@ import {
     noteEditor,
     updateNoteAndBack,
     openEditorBtn,
-    showExpandEditor,
+    showExpandEditorTools,
     // dropMenu,
 } from "./noteEditor.js";
 import {
@@ -212,7 +212,7 @@ function clickEventOnNotes(multiSelecting) {
                 removeClass(noteEditor, "editorNotActive");
                 addClass(noteEditor, "editorActive");
                 updateNoteAndBack(dataIndex);
-                showExpandEditor();
+                showExpandEditorTools();
             } else {
                 checksAndUnchecksNote(dataIndex);
             }
