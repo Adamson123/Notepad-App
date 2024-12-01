@@ -26,10 +26,6 @@ XPAD is a practice project aimed at honing my web development skills. My objecti
 -   HTML5, CSS3, JavaScript
 -   boostrap icons
 
-### How to Contribute:
-
-As a learner aspiring to become a full-stack developer, your input is invaluable. Please provide feedback and suggestions on areas where I can improve and grow. Your contributions will help me achieve my goal of mastering full-stack development.
-
 ### Contact:
 
 For any questions or feedback regarding XPAD, feel free to reach out to me:
